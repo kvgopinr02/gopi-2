@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCD and LCM Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.8em;
+            transition: color 0.3s ease;
+        }
+
+        h1:hover {
+            color: #1abc9c;
+        }
+
+        .box {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+            position: relative;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 0;
+            transition: transform 0.2s ease;
+        }
+
+        pre:hover {
+            transform: scale(1.02);
+        }
+
+        code {
+            color: #ecf0f1;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #copy-message {
+            margin-top: 10px;
+            color: #27ae60;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #copy-message.visible {
+            opacity: 1;
+        }
+
+        .legend {
+            font-size: 1.1em;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GCD and LCM Calculator</h1>
+        <div class="box">
+            <h2>Algorithm</h2>
+            <ol>
+                <li>Start the program.</li>
+                <li>Prompt the user to input two integer values.</li>
+                <li>Calculate the GCD of the two integers.</li>
+                <li>Calculate the LCM using the formula:
+                    <blockquote>
+                        LCM(a, b) = (a * b) / GCD(a, b)
+                    </blockquote>
+                </li>
+                <li>Display the LCM to the user.</li>
+                <li>End the program.</li>
+            </ol>
+        </div>
+
+        <div class="box">
+            <div class="legend">C Code:</div>
+            <pre id="gcd-lcm-code"><code>
+#include &lt;stdio.h&gt;
+
+int gcd(int, int);
+
+void main() {
+    int i, j;
+    printf("Enter two integer values: ");
+    scanf("%d %d", &i, &j);
+    int lcm = (i * j) / gcd(i, j);
+    printf("The lcm of two numbers %d and %d: %d\n", i, j, lcm);
+}
+
+int gcd(int a, int b) {
+    if (b == 0) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+            </code></pre>
+            <button class="copy-btn" onclick="copyGcdLcmCode()">Copy</button>
+            <p id="copy-gcd-lcm-message" class="hidden">Code copied to clipboard!</p>
+        </div>
+    </div>
+
+    <script>
+        function copyGcdLcmCode() {
+            const code = document.getElementById('gcd-lcm-code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const message = document.getElementById('copy-gcd-lcm-message');
+                message.classList.remove('hidden');
+                message.classList.add('visible');
+                setTimeout(() => {
+                    message.classList.add('hidden');
+                    message.classList.remove('visible');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Functions C Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .box {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+            position: relative;
+        }
+        .box h2 {
+            color: #34495e;
+            margin: 0;
+            font-size: 1.5em;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0 0 0;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background-color: #2980b9;
+        }
+        #copy-message {
+            margin-top: 10px;
+            color: #27ae60;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #copy-message.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>String Functions C Code</h1>
+
+        <div class="box">
+            <h2>Algorithm</h2>
+            <ol>
+                <li><strong>Start</strong> the program.</li>
+                <li><strong>Prompt</strong> the user to enter two strings.</li>
+                <li><strong>Calculate</strong> the length of the first string.</li>
+                <li><strong>Copy</strong> the first string to another variable.</li>
+                <li><strong>Reverse</strong> the second string.</li>
+                <li><strong>Compare</strong> the two strings for equality and order.</li>
+                <li><strong>Reverse</strong> the second string again and concatenate it with the first string.</li>
+                <li><strong>Display</strong> all results.</li>
+                <li><strong>End</strong> the program.</li>
+            </ol>
+        </div>
+
+        <div class="box">
+            <h2>C Code</h2>
+            <button class="copy-btn" onclick="copyCode()">Copy</button>
+            <pre id="code">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int stringLength(const char *str) {
+    int len = strlen(str);
+    return len;
+}
+
+void stringCopy(char *dest, const char *src) {
+    strcpy(dest, src);
+}
+
+void stringReverse(char *str) {
+    int n = strlen(str);
+    for (int i = 0; i < n / 2; i++) {
+        char temp = str[i];
+        str[i] = str[n - i - 1];
+        str[n - 1 - i] = temp;
+    }
+}
+
+int stringCompare(const char *str1, const char *str2) {
+    return strcmp(str1, str2);
+}
+
+void stringConcatenate(char *dest, const char *src) {
+    int length = stringLength(dest);
+    int i = 0;
+    while (src[i] != '\0') {
+        dest[length + i] = src[i];
+        i++;
+    }
+    dest[length + i] = '\0';
+}
+
+int main() {
+    char str1[100], str2[50], result[150];
+
+    printf("string1: ");
+    scanf("%s", str1);
+    printf("string2: ");
+    scanf("%s", str2);
+
+    int length = stringLength(str1);
+    printf("Length of str1: %d\n", length);
+
+    stringCopy(result, str1);
+    printf("Copy of str1: %s\n", result);
+
+    stringReverse(str2);
+    printf("Reverse of str2: %s\n", str2);
+
+    int cmp = stringCompare(str1, str2);
+    if (cmp == 0) {
+        printf("str1 and str2 are equal\n");
+    } else if (cmp < 0) {
+        printf("str1 is less than str2\n");
+    } else {
+        printf("str1 is greater than str2\n");
+    }
+
+    stringCopy(result, str1);
+    stringReverse(str2);
+    stringConcatenate(result, str2);
+    printf("Concatenation of str1 and str2: %s\n", result);
+
+    return 0;
+}
+            </pre>
+        </div>
+        <p id="copy-message">Code copied to clipboard!</p>
+    </div>
+
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const message = document.getElementById('copy-message');
+                message.classList.add('visible');
+                setTimeout(() => {
+                    message.classList.remove('visible');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

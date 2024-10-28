@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pascal's Triangle Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.8em;
+            transition: color 0.3s ease;
+        }
+
+        h1:hover {
+            color: #1abc9c;
+        }
+
+        .box {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+            position: relative;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 0;
+            transition: transform 0.2s ease;
+        }
+
+        pre:hover {
+            transform: scale(1.02);
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #copy-pascal-message {
+            margin-top: 10px;
+            color: #27ae60;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #copy-pascal-message.visible {
+            opacity: 1;
+        }
+
+        .legend {
+            font-size: 1.1em;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pascal's Triangle Generator</h1>
+        <div class="box">
+            <h2>Algorithm</h2>
+            <ol>
+                <li>Start the program.</li>
+                <li>Prompt the user to input the number of rows for Pascal's Triangle.</li>
+                <li>For each row:</li>
+                <ol>
+                    <li>Print leading spaces to center the triangle.</li>
+                    <li>Initialize variable <strong>k</strong> to 1.</li>
+                    <li>For each column in the row:</li>
+                    <ol>
+                        <li>If <strong>j == 0</strong> or <strong>i == 0</strong>, set <strong>k = 1</strong>.</li>
+                        <li>Otherwise, calculate <strong>k = (k * (i - j + 1)) / j</strong>.</li>
+                        <li>Print the value of <strong>k</strong>.</li>
+                    </ol>
+                </ol>
+                <li>Print a new line after each row.</li>
+                <li>End the program.</li>
+            </ol>
+        </div>
+
+        <div class="box">
+            <div class="legend">C Code:</div>
+            <pre id="pascal-code"><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int rows, i, j;
+    printf("Number of rows: ");
+    scanf("%d", &rows);
+    int k = 1;
+    for (int i = 0; i < rows; i++) {
+        for (int s = 1; s <= rows - i; s++) {
+            printf(" ");
+        }
+        for (j = 0; j <= i; j++) {
+            if (j == 0 || i == 0)
+                k = 1;
+            else 
+                k = (k * (i - j + 1)) / j;
+            printf("%d ", k);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+            </code></pre>
+            <button class="copy-btn" onclick="copyPascalCode()">Copy</button>
+            <p id="copy-pascal-message" class="hidden">Code copied to clipboard!</p>
+        </div>
+    </div>
+
+    <script>
+        function copyPascalCode() {
+            const code = document.getElementById('pascal-code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const message = document.getElementById('copy-pascal-message');
+                message.classList.remove('hidden');
+                message.classList.add('visible');
+                setTimeout(() => {
+                    message.classList.add('hidden');
+                    message.classList.remove('visible');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

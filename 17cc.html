@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Multiplication Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.8em;
+        }
+        .box {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+            position: relative;
+        }
+        h2 {
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 0;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .copy-btn:hover {
+            background-color: #2980b9;
+        }
+        .hidden {
+            display: none;
+        }
+        #copy-message {
+            margin-top: 10px;
+            color: #27ae60;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #copy-message.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Matrix Multiplication Program</h1>
+
+        <div class="box">
+            <h2>Algorithm for Reading a Matrix</h2>
+            <ol>
+                <li>Start the program.</li>
+                <li>Prompt the user for the dimensions of the matrix (rows and columns).</li>
+                <li>Declare a 2D array to hold the matrix elements.</li>
+                <li>Loop through each element and read the values from the user.</li>
+                <li>End the program.</li>
+            </ol>
+        </div>
+
+        <div class="box">
+            <div>C Code for Reading a Matrix:</div>
+            <pre id="matrix-read-code"><code>
+#include &lt;stdio.h&gt;
+void read1(int a[10][10], int m, int n) {
+    printf("Enter %d elements: ", m * n);
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+}
+            </code></pre>
+            <button class="copy-btn" onclick="copyMatrixReadCode()">Copy</button>
+            <p id="copy-message" class="hidden">Code copied to clipboard!</p>
+        </div>
+
+        <div class="box">
+            <h2>Algorithm for Matrix Multiplication</h2>
+            <ol>
+                <li>Start the program.</li>
+                <li>Prompt the user for the dimensions of the first and second matrices.</li>
+                <li>Read both matrices using the <strong>read1</strong> function.</li>
+                <li>Check if the number of columns of the first matrix equals the number of rows of the second matrix.</li>
+                <li>If they are compatible, perform the multiplication of both matrices.</li>
+                <li>Display the resultant matrix.</li>
+                <li>If they are not compatible, display an error message.</li>
+                <li>End the program.</li>
+            </ol>
+        </div>
+
+        <div class="box">
+            <div>C Code for Matrix Multiplication:</div>
+            <pre id="matrix-multiply-code"><code>
+#include &lt;stdio.h&gt;
+
+void display(int b[10][10], int m, int n) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", b[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void multiplicationOfTwoMatrices(int a[10][10], int b[10][10], int m, int n, int q) {
+    int c[10][10];
+    printf("The resultant matrix is:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < q; j++) {
+            c[i][j] = 0;
+            for (int k = 0; k < n; k++) {
+                c[i][j] += a[i][k] * b[k][j];
+            }
+            printf("%d ", c[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int a[10][10], b[10][10], m, n, p, q;
+    printf("Enter the size of the first matrix: ");
+    scanf("%d%d", &m, &n);
+    read1(a, m, n);
+    printf("Enter the size of the second matrix: ");
+    scanf("%d%d", &p, &q);
+    read1(b, p, q);
+    printf("The first matrix is:\n");
+    display(a, m, n);
+    printf("The second matrix is:\n");
+    display(b, p, q);
+    if (n == p) {
+        multiplicationOfTwoMatrices(a, b, m, n, q);
+    } else {
+        printf("Multiplication is not possible\n");
+    }
+    return 0;
+}
+            </code></pre>
+            <button class="copy-btn" onclick="copyMatrixMultiplyCode()">Copy</button>
+            <p id="copy-message" class="hidden">Code copied to clipboard!</p>
+        </div>
+    </div>
+
+    <script>
+        function copyMatrixReadCode() {
+            const code = document.getElementById('matrix-read-code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const message = document.getElementById('copy-message');
+                message.classList.remove('hidden');
+                message.classList.add('visible');
+                setTimeout(() => {
+                    message.classList.add('hidden');
+                    message.classList.remove('visible');
+                }, 2000);
+            });
+        }
+
+        function copyMatrixMultiplyCode() {
+            const code = document.getElementById('matrix-multiply-code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const message = document.getElementById('copy-message');
+                message.classList.remove('hidden');
+                message.classList.add('visible');
+                setTimeout(() => {
+                    message.classList.add('hidden');
+                    message.classList.remove('visible');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

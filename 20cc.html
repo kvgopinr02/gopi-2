@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Vowels from String C Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .box {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+            position: relative;
+        }
+        .box h2 {
+            color: #34495e;
+            margin: 0;
+            font-size: 1.5em;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0 0 0;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background-color: #2980b9;
+        }
+        #copy-message {
+            margin-top: 10px;
+            color: #27ae60;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #copy-message.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Remove Vowels from String C Code</h1>
+
+        <div class="box">
+            <h2>Algorithm</h2>
+            <ol>
+                <li><strong>Start</strong> the program.</li>
+                <li><strong>Prompt</strong> the user to enter a string.</li>
+                <li><strong>Loop</strong> through each character in the string:
+                    <ul>
+                        <li>If the character is a vowel (a, e, i, o, u, A, E, I, O, U):
+                            <ul>
+                                <li><strong>Shift</strong> all subsequent characters one position to the left.</li>
+                                <li>Decrease the index to account for the removed character.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Display</strong> the modified string after removing vowels.</li>
+                <li><strong>End</strong> the program.</li>
+            </ol>
+        </div>
+
+        <div class="box">
+            <h2>C Code</h2>
+            <button class="copy-btn" onclick="copyCode()">Copy</button>
+            <pre id="code">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[45];
+    printf("String: ");
+    scanf("%s", str);
+    for(int i = 0; str[i] != '\0'; i++) {
+        if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || 
+           str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U') {
+            for(int j = i; str[j] != 0; j++) {
+                str[j] = str[j + 1];
+            }
+            i--;
+        }
+    }
+    printf("After removing vowels: %s\n", str);
+    return 0;
+}
+            </pre>
+        </div>
+        <p id="copy-message">Code copied to clipboard!</p>
+    </div>
+
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const message = document.getElementById('copy-message');
+                message.classList.add('visible');
+                setTimeout(() => {
+                    message.classList.remove('visible');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

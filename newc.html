@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa; /* Light Cyan */
+        }
+
+        header {
+            background: #00838f; /* Teal */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            padding: 15px;
+        }
+
+        #search {
+            padding: 8px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #00796b; /* Dark Teal */
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #b2ebf2; /* Light Blue border */
+            border-radius: 5px;
+            background-color: #ffffff; /* White background */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #f9f9f9; /* Light grey */
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .button {
+            background-color: #00796b; /* Dark Teal */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #005b5c; /* Darker Teal */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Index Page</h1>
+    </header>
+    <main>
+        <input type="text" id="search" placeholder="Search...">
+        <div id="sections">
+            <div class="section">
+                <span>1. Write a C program to scan all data type variables(int, float, char, double) as input and print them as output.</span>
+                <a class="button" href="1cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>2. Write a C program to perform temperature conversions from Centigrade to Fahrenheit and vice versa.</span>
+                <a class="button" href="2cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>3. Write a C program to scan an input and perform pre and post increment operations on it and display the result.</span>
+                <a class="button" href="3cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>4. Write a C program to extract the last two digits of a given integer n, where the number of digits should be greater than 2.</span>
+                <a class="button" href="4cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>5. Write a C program to display the greatest of three numbers using a conditional operator (ternary operator).</span>
+                <a class="button" href="5cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>6. Write a C program to check whether a given character is a vowel or a consonant or a digit or a special symbol.</span>
+                <a class="button" href="6cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>7. Write a C program to find the roots and nature of roots of a quadratic equation, given its coefficients.</span>
+                <a class="button" href="7cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>8. Write a C program to convert upper case characters to lowercase and vice versa.</span>
+                <a class="button" href="8cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>9. Write a C program to display the factors of a given number and check whether it is a prime or not.</span>
+                <a class="button" href="9cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>10. Write a C program to check whether the given integer is Armstrong or not and display the sum of individual digits of a given integer raised to the power of n.</span>
+                <a class="button" href="10cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>11. Write a Program to find the LCM of the given numbers.</span>
+                <a class="button" href="11cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>12. Write a C program to display Pascal’s triangle using functions.</span>
+                <a class="button" href="12cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>13. Write a C program to read n integer values into an array and display them.</span>
+                <a class="button" href="13cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>14. Write a C program to count and display the number of positive, negative, even, and odd numbers in a given array of integers and also display their sum.</span>
+                <a class="button" href="14cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>15. Write the C program to find the largest and the smallest of some numbers given by the user.</span>
+                <a class="button" href="15cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>16. Write a program to find the addition of two matrices using functions.</span>
+                <a class="button" href="16cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>17. Write a program to find the multiplication of two matrices using functions.</span>
+                <a class="button" href="17cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>18. Write a C program to print the transpose of a matrix using functions.</span>
+                <a class="button" href="18cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>19. Write a C program to check whether a given integer exists in a list of numbers and print its index value if it is present, otherwise print “No”.</span>
+                <a class="button" href="19cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>20. Write a C program to delete all vowels in a given string and display the remaining string.</span>
+                <a class="button" href="20cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>21. Write a C program to check whether a given string is Palindrome or not by passing parameters to Function & returning value.</span>
+                <a class="button" href="21cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>22. Write a C program that reads two integers as strings and displays their sum.</span>
+                <a class="button" href="22cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>23. Write a C program to demonstrate the usage of at least 10 predefined string-handling functions.</span>
+                <a class="button" href="23cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>24. Write a C program that implements the following user-defined string-handling functions:</span>
+                <a class="button" href="24cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>25. Write a C program to demonstrate the usage of pointers.</span>
+                <a class="button" href="25cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>26. Write a C program to swap two numbers using pointers.</span>
+                <a class="button" href="26cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>27. Write a C program to demonstrate the use of Dynamic Memory Allocation.</span>
+                <a class="button" href="27cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>28. C Program Swap three numbers in Cyclic Order Using Call by Reference.</span>
+                <a class="button" href="28cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>29. Demonstrate Pointers to Pointers and Array of Pointers.</span>
+                <a class="button" href="29cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>30. Demonstrate Pointer to Array and Pointers to Functions.</span>
+                <a class="button" href="30cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>31. Write a C program to access and display the members of the structure.</span>
+                <a class="button" href="31cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>32. Write a C program that demonstrates different ways to access the structure elements using pointers.</span>
+                <a class="button" href="32cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>33. Write a C program to read the contents of a file and display them on the output screen.</span>
+                <a class="button" href="33cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>34. Write a C program to copy the data of file1 to file2 and display the data of file2.</span>
+                <a class="button" href="34cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>35. Write a C program to Count number of Characters, Words and Lines of a given File.</span>
+                <a class="button" href="35cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>36. Write a C program to print the last n characters of a file by reading the file name and n value from the command line.</span>
+                <a class="button" href="36cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>37. Write a C program to replace all the vowels in a given string with a given character.</span>
+                <a class="button" href="37cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>38. Write a C program to perform arithmetic operations using command-line arguments.</span>
+                <a class="button" href="38cc.html">Open</a>
+            </div>
+            <div class="section">
+                <span>39. Write a C program that writes the contents to a file and reads the contents from a file using structures. Consider the filename as "person.txt".</span>
+                <a class="button" href="39cc.html">Open</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; <span id="year"></span> Credit goes to Varun & G </p>
+    </footer>
+
+    <script>
+        // Dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Search functionality
+        document.getElementById('search').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const sections = document.querySelectorAll('.section');
+
+            sections.forEach(section => {
+                const text = section.textContent.toLowerCase();
+                section.style.display = text.includes(filter) ? 'flex' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
