@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Files for Semester 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .unit {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+            width: 300px;
+            margin: 20px auto;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .unit:hover {
+            background-color: #388e3c;
+            transform: translateY(-10px);
+        }
+
+        .btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        .download-btn {
+            background-color: #007bff; /* Blue */
+            color: white;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .view-btn {
+            background-color: #ff9800; /* Orange */
+            color: white;
+        }
+
+        .view-btn:hover {
+            background-color: #e68900;
+        }
+
+        #pdf-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #pdf-frame {
+            width: 80%;
+            height: 600px;
+            border: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Numerical Methods Files</h1>
+    </header>
+
+    <div class="container">
+        <!-- Unit 1 -->
+        <div class="unit">
+            <p>Unit 1: Introduction </p>
+            <button class="btn download-btn" onclick="downloadFile('unit1')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('unit1')">View in Page</button>
+        </div>
+
+        <!-- Unit 2 -->
+        <div class="unit">
+            <p>Unit 2: Data Structures</p>
+            <button class="btn download-btn" onclick="downloadFile('unit2')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('unit2')">View in Page</button>
+        </div>
+
+        <!-- Unit 3 -->
+        <div class="unit">
+            <p>Unit 3: Algorithms</p>
+            <button class="btn download-btn" onclick="downloadFile('unit3')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('unit3')">View in Page</button>
+        </div>
+
+        <!-- Unit 4 -->
+        <div class="unit">
+            <p>Unit 4: Databases</p>
+            <button class="btn download-btn" onclick="downloadFile('unit4')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('unit4')">View in Page</button>
+        </div>
+
+        <!-- Unit 5 -->
+        <div class="unit">
+            <p>Unit 5: Computer Networks</p>
+            <button class="btn download-btn" onclick="downloadFile('unit5')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('unit5')">View in Page</button>
+        </div>
+    </div>
+
+    <!-- PDF Display Section -->
+    <div id="pdf-container">
+        <iframe id="pdf-frame"></iframe>
+    </div>
+
+    <script>
+        var serverUrl = "http://localhost:8000/";
+
+        function getFilePath(unit) {
+            switch (unit) {
+                case 'unit1': return "week%208/unit1.pdf";
+                case 'unit2': return "week%208/unit2.pdf";
+                case 'unit3': return "week%208/unit3.pdf";
+                case 'unit4': return "week%208/unit4.pdf";
+                case 'unit5': return "week%208/unit5.pdf";
+                default: return "";
+            }
+        }
+
+        function downloadFile(unit) {
+            var fileUrl = serverUrl + getFilePath(unit);
+            var link = document.createElement("a");
+            link.href = fileUrl;
+            link.download = fileUrl.split('/').pop();  // Extracts filename from URL
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function openFile(unit) {
+            var fileUrl = serverUrl + getFilePath(unit);
+            var pdfFrame = document.getElementById("pdf-frame");
+            pdfFrame.src = fileUrl;
+            pdfFrame.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
