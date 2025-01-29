@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Files for Semester 4</title>
+    <title>Open and Download Files</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,43 +85,50 @@
 <body>
 
     <header>
-        <h1>Numerical Methods Files</h1>
+        <h1>Open and Download Files</h1>
     </header>
 
     <div class="container">
         <!-- Unit 1 -->
         <div class="unit">
-            <p>Unit 1: Introduction </p>
-            <button class="btn download-btn" onclick="downloadFile('unit1')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('unit1')">View in Page</button>
+            <p>Unit 1: Introduction</p>
+            <button class="btn download-btn" onclick="downloadFile('Complete os notes.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('Complete os notes.pdf')">View in Page</button>
         </div>
 
         <!-- Unit 2 -->
         <div class="unit">
             <p>Unit 2: Data Structures</p>
-            <button class="btn download-btn" onclick="downloadFile('unit2')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('unit2')">View in Page</button>
+            <button class="btn download-btn" onclick="downloadFile('unit2.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('unit2.pdf')">View in Page</button>
         </div>
 
         <!-- Unit 3 -->
         <div class="unit">
             <p>Unit 3: Algorithms</p>
-            <button class="btn download-btn" onclick="downloadFile('unit3')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('unit3')">View in Page</button>
+            <button class="btn download-btn" onclick="downloadFile('unit3.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('unit3.pdf')">View in Page</button>
         </div>
 
         <!-- Unit 4 -->
         <div class="unit">
             <p>Unit 4: Databases</p>
-            <button class="btn download-btn" onclick="downloadFile('unit4')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('unit4')">View in Page</button>
+            <button class="btn download-btn" onclick="downloadFile('unit4.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('unit4.pdf')">View in Page</button>
         </div>
 
         <!-- Unit 5 -->
         <div class="unit">
             <p>Unit 5: Computer Networks</p>
-            <button class="btn download-btn" onclick="downloadFile('unit5')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('unit5')">View in Page</button>
+            <button class="btn download-btn" onclick="downloadFile('unit5.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('unit5.pdf')">View in Page</button>
+        </div>
+
+        <!-- Conotes -->
+        <div class="unit">
+            <p>Conotes</p>
+            <button class="btn download-btn" onclick="downloadFile('conotes.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('conotes.pdf')">View in Page</button>
         </div>
     </div>
 
@@ -131,33 +138,20 @@
     </div>
 
     <script>
-        var serverUrl = "http://localhost:8000/";
-
-        function getFilePath(unit) {
-            switch (unit) {
-                case 'unit1': return "week%208/Complete os notes.pdf";
-                case 'unit2': return "week%208/unit2.pdf";
-                case 'unit3': return "week%208/unit3.pdf";
-                case 'unit4': return "week%208/unit4.pdf";
-                case 'unit5': return "week%208/unit5.pdf";
-                default: return "";
-            }
-        }
-
-        function downloadFile(unit) {
-            var fileUrl = serverUrl + getFilePath(unit);
+        // File names (assumes files are in the same directory as the HTML file)
+        function downloadFile(file) {
             var link = document.createElement("a");
-            link.href = fileUrl;
-            link.download = fileUrl.split('/').pop();  // Extracts filename from URL
+            link.href = file;  // Direct file name (e.g., 'unit1.pdf')
+            link.download = file;  // Use the same file name for download
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
 
-        function openFile(unit) {
-            var fileUrl = serverUrl + getFilePath(unit);
+        // Function to open the file in an iframe
+        function openFile(file) {
             var pdfFrame = document.getElementById("pdf-frame");
-            pdfFrame.src = fileUrl;
+            pdfFrame.src = file;  // Use the direct file name for viewing
             pdfFrame.style.display = "block";
         }
     </script>
