@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open and Download Files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c6f7d2;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #2b6e2b;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .unit {
+            background-color: #388e3c;
+            color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+            width: 300px;
+            margin: 20px auto;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .unit:hover {
+            background-color: #2e7d32;
+            transform: translateY(-10px);
+        }
+
+        .btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        .download-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .view-btn {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .view-btn:hover {
+            background-color: #e68900;
+        }
+
+        #pdf-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #pdf-frame {
+            width: 80%;
+            height: 600px;
+            border: none;
+            display: none;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 15px;
+            background-color: #2b6e2b;
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Open and Download Files</h1>
+    </header>
+
+    <div class="container">
+        <!-- Unit 1 -->
+        <div class="unit">
+            <p>Complete os notes</p>
+            <button class="btn download-btn" onclick="downloadFile('Complete os notes.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('Complete os notes.pdf')">View in Page</button>
+        </div>
+
+        <!-- Unit 2 -->
+        <div class="unit">
+            <p>Complete OS record</p>
+            <button class="btn download-btn" onclick="downloadFile('Complete OS record.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('Complete OS record.pdf')">View in Page</button>
+        </div>
+
+        <!-- Unit 3 -->
+        <div class="unit">
+            <p>OS UNIT 1</p>
+            <button class="btn download-btn" onclick="downloadFile('OS UNIT 1.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('OS UNIT 1.pdf')">View in Page</button>
+        </div>
+
+        <!-- Unit 4 -->
+        <div class="unit">
+            <p>OS UNIT 2</p>
+            <button class="btn download-btn" onclick="downloadFile('OS UNIT 2.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('OS UNIT 2.pdf')">View in Page</button>
+        </div>
+
+        <!-- Unit 5 -->
+        <div class="unit">
+            <p>Complete OS Lab</p>
+            <button class="btn download-btn" onclick="downloadFile('Complete OS Lab.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('Complete OS Lab.pdf')">View in Page</button>
+        </div>
+
+        <!-- Conotes -->
+    </div>
+
+    <!-- PDF Display Section -->
+    <div id="pdf-container">
+        <iframe id="pdf-frame"></iframe>
+    </div>
+
+    <footer>
+        &copy; 2025 @open files in desktop only and you can download files desktop or mobile .Credit goes to V and G.
+    </footer>
+
+    <script>
+        function downloadFile(file) {
+            var link = document.createElement("a");
+            link.href = file;
+            link.download = file;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function openFile(file) {
+            var pdfFrame = document.getElementById("pdf-frame");
+            pdfFrame.src = file;
+            pdfFrame.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
