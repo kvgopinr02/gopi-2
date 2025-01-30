@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open and Download Files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c6f7d2;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #2b6e2b;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .unit {
+            background-color: #388e3c;
+            color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+            width: 300px;
+            margin: 20px auto;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .unit:hover {
+            background-color: #2e7d32;
+            transform: translateY(-10px);
+        }
+
+        .btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        .download-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .view-btn {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .view-btn:hover {
+            background-color: #e68900;
+        }
+
+        #pdf-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #pdf-frame {
+            width: 80%;
+            height: 600px;
+            border: none;
+            display: none;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 15px;
+            background-color: #2b6e2b;
+            color: white;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .unit {
+                width: 90%;
+            }
+            #pdf-frame {
+                width: 100%;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Open and Download Files</h1>
+    </header>
+
+    <div class="container">
+        <!-- Unit 1 -->
+        <div class="unit">
+            <p>AEE Unit-1</p>
+            <button class="btn download-btn" onclick="downloadFile('AEE Unit-1.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('AEE Unit-1.pdf')">View in Page</button>
+        </div>
+
+        <!-- Unit 2 -->
+        <div class="unit">
+            <p>AEE UNIT-3</p>
+            <button class="btn download-btn" onclick="downloadFile('AEE UNIT-3.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('AEE UNIT-3.pdf')">View in Page</button>
+        </div>
+
+        <!-- Unit 3 -->
+        <div class="unit">
+            <p>AEE UNIT-4</p>
+            <button class="btn download-btn" onclick="downloadFile('AEE UNIT-4.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('AEE UNIT-4.pdf')">View in Page</button>
+        </div>
+
+        <!-- Unit 4 -->
+        <div class="unit">
+            <p>AEE UNIT-5</p>
+            <button class="btn download-btn" onclick="downloadFile('AEE UNIT-5.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('AEE UNIT-5.pdf')">View in Page</button>
+        </div>
+
+        <!-- Unit 5 -->
+        <div class="unit">
+            <p>Journal & Ledger</p>
+            <button class="btn download-btn" onclick="downloadFile('Journal & Ledger.docx')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('Journal & Ledger.docx')">View in Page</button>
+        </div>
+        <div class="unit">
+            <p>UNIT-2-INTRODUCTION TO FINANCIAL ACCOUNTING</p>
+            <button class="btn download-btn" onclick="downloadFile('UNIT-2-INTRODUCTION TO FINANCIAL ACCOUNTING.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('UNIT-2-INTRODUCTION TO FINANCIAL ACCOUNTING.pdf')">View in Page</button>
+        </div>
+
+        <!-- Unit 5 -->
+        <div class="unit">
+            <p> Simplified Accounts Important Topics</p>
+            <button class="btn download-btn" onclick="downloadFile('Vamsi Simplified Accounts Important Topics.pdf')">Download File</button>
+            <button class="btn view-btn" onclick="openFile('Vamsi Simplified Accounts Important Topics.pdf')">View in Page</button>
+        </div>
+    </div>
+
+    <!-- PDF Display Section -->
+    <div id="pdf-container">
+        <iframe id="pdf-frame"></iframe>
+    </div>
+
+    <footer>
+        &copy; 2025. Files can be opened on desktops, and downloaded on both desktop and mobile. Credit goes to V and G.
+    </footer>
+
+    <script>
+        function downloadFile(file) {
+            var link = document.createElement("a");
+            link.href = file;
+            link.download = file;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function openFile(file) {
+            if (file.endsWith('.pdf')) {
+                var pdfFrame = document.getElementById("pdf-frame");
+                pdfFrame.src = file;
+                pdfFrame.style.display = "block";
+            } else if (file.endsWith('.docx')) {
+                alert("Viewing this file type is not supported. It is docx type file you can download it.");
+            } else {
+                alert("Viewing this file type is not supported.");
+            }
+        }
+    </script>
+
+</body>
+</html>
