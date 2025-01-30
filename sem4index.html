@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semester Content</title>
     <style>
+        /* General Page Styles */
         body {
             background: linear-gradient(to right, #a8e6cf, #dcedc1);
             font-family: Arial, sans-serif;
@@ -31,26 +32,7 @@
             animation: fadeIn 1s ease-in-out, glow 1.5s infinite alternate;
         }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes glow {
-            0% {
-                box-shadow: 0px 0px 10px rgba(76, 175, 80, 0.5);
-            }
-            100% {
-                box-shadow: 0px 0px 20px rgba(76, 175, 80, 0.8);
-            }
-        }
-
+        /* Subject Box Container */
         .subject-container {
             display: flex;
             flex-wrap: wrap;
@@ -59,34 +41,52 @@
             margin-top: 40px;
         }
 
+        /* Subject Box */
         .subject-box {
-            background-color: #4caf50;
-            color: white;
+            background-color: #fff;
             padding: 20px;
-            font-size: 24px;
-            width: 200px;
+            font-size: 18px;
+            width: 220px;
             text-align: center;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .subject-box:hover {
-            transform: scale(1.05) rotate(2deg);
+            transform: scale(1.07);
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            background-color: #388e3c;
         }
 
+        /* Image Styling */
+        .subject-box img {
+            width: 80px; /* Adjust size as needed */
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .subject-box:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Link Styling */
         .subject-box a {
-            color: white;
+            color: #333;
             text-decoration: none;
-            display: block;
+            font-weight: bold;
         }
 
+        /* Fade-in Animation */
         @keyframes fadeInUp {
             0% {
                 transform: translateY(20px);
@@ -95,6 +95,14 @@
             100% {
                 transform: translateY(0);
                 opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .subject-container {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -106,11 +114,36 @@
     </header>
 
     <div class="subject-container">
-        <div class="subject-box"><a href="unit.html">Numerical Methods</a></div>
-        <div class="subject-box"><a href="unitco.html">Operating Systems</a></div>
-        <div class="subject-box"><a href="unitdwdh.html">Data Warehousing</a></div>
-        <div class="subject-box"><a href="unitdaa.html">DAA</a></div>
-        <div class="subject-box"><a href="unitaee.html">Accountings</a></div>
+        <div class="subject-box">
+            <a href="unit.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/6207/6207362.png" alt="Numerical Methods">
+                Numerical Methods
+            </a>
+        </div>
+        <div class="subject-box">
+            <a href="unitco.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/2092/2092661.png" alt="Operating Systems">
+                Operating Systems
+            </a>
+        </div>
+        <div class="subject-box">
+            <a href="unitdwdh.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/2807/2807840.png" alt="Data Warehousing">
+                Data Warehousing
+            </a>
+        </div>
+        <div class="subject-box">
+            <a href="unitdaa.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/4539/4539500.png" alt="DAA">
+                DAA
+            </a>
+        </div>
+        <div class="subject-box">
+            <a href="unitaee.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/2857/2857041.png" alt="Accounting">
+                Accounting
+            </a>
+        </div>
     </div>
 
 </body>
