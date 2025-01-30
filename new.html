@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Learning Platform</title>
     <style>
+        /* Enable smooth scrolling for the entire page */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Full-page background */
         body {
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x900/?education,study') no-repeat center center/cover;
@@ -12,7 +17,7 @@
             margin: 0;
             color: #fff;
             text-align: center;
-            overflow: hidden;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         header {
@@ -25,7 +30,7 @@
             display: inline-block;
             padding: 15px 30px;
             border-radius: 10px;
-            animation: slideIn 1s ease-out;
+            animation: zoomIn 1s ease-out;
         }
 
         h2 {
@@ -35,7 +40,7 @@
             display: inline-block;
             padding: 10px 20px;
             border-radius: 8px;
-            animation: fadeInUp 0.6s ease forwards;
+            animation: fadeInUp 1s ease forwards;
             opacity: 0;
         }
 
@@ -44,7 +49,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            animation: fadeInUp 0.8s ease forwards;
+            animation: fadeInUp 1s ease forwards;
             opacity: 0;
             margin-top: 40px;
         }
@@ -61,7 +66,7 @@
             cursor: pointer;
             text-align: center;
             transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
-            animation: buttonAnimation 0.6s ease forwards;
+            animation: bounceIn 0.6s ease forwards;
             opacity: 0;
             text-decoration: none;
             display: flex;
@@ -71,13 +76,13 @@
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* New Hover effect with color change and shadow scaling */
+        /* Hover effects with related colors */
         .button:hover {
-            background-color: #f0f0f0; /* Lighter background */
-            color: #333; /* Dark text */
-            transform: translateY(-5px) scale(1.1); /* Slightly more scaling */
-            box-shadow: 0px 12px 18px rgba(0, 0, 0, 0.3); /* Deeper shadow */
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(45deg, #4caf50, #2196f3, #9c27b0); /* Green, Blue, and Purple */
+            color: white;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0px 12px 18px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background 0.5s ease, box-shadow 0.3s ease;
         }
 
         /* Icon styling */
@@ -90,7 +95,7 @@
 
         /* Hover effect for icon */
         .button:hover img {
-            transform: scale(1.2); /* Slight scaling effect on hover */
+            transform: scale(1.2);
         }
 
         /* New Section for Semester 4 */
@@ -99,7 +104,7 @@
             padding: 40px;
             border-radius: 10px;
             color: white;
-            animation: fadeInUp 1s ease forwards;
+            animation: scaleUp 1s ease forwards;
             opacity: 0;
             margin-top: 30px;
             display: flex;
@@ -120,26 +125,42 @@
             }
         }
 
-        /* Button Animation */
-        @keyframes buttonAnimation {
+        /* Button bounce animation */
+        @keyframes bounceIn {
             0% {
-                transform: translateY(20px);
+                transform: scale(0.5);
                 opacity: 0;
             }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
             100% {
-                transform: translateY(0);
+                transform: scale(1);
                 opacity: 1;
             }
         }
 
-        /* Slide-in Animation for Header */
-        @keyframes slideIn {
+        /* Zoom-in animation for Header */
+        @keyframes zoomIn {
             0% {
-                transform: translateX(-50%);
+                transform: scale(0.8);
                 opacity: 0;
             }
             100% {
-                transform: translateX(0);
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Scale-up animation for new section */
+        @keyframes scaleUp {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
                 opacity: 1;
             }
         }
@@ -160,16 +181,26 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            animation: marqueeEffect 15s linear infinite;
+            animation: marqueeEffect 15s linear infinite, bounce 1.5s ease-in-out infinite;
         }
 
-        /* Keyframe for marquee effect */
+        /* Marquee effect */
         @keyframes marqueeEffect {
             0% {
                 transform: translateX(100%);
             }
             100% {
                 transform: translateX(-100%);
+            }
+        }
+
+        /* Bounce effect for marquee text */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
             }
         }
 
@@ -220,7 +251,7 @@
     <!-- Marquee at the Footer -->
     <div class="marquee-container">
         <div class="marquee">
-            Explore the latest resources, guides, and tips on your learning journey. Stay updated with our new content every week! 
+            Explore the latest resources, guides, and tips on your learning journey. Stay updated with our new content every week!
         </div>
     </div>
 </body>
