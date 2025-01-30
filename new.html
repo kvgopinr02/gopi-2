@@ -5,69 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Learning Platform</title>
     <style>
+        /* Full-page background */
         body {
-            background: linear-gradient(to right, #a8e6cf, #dcedc1);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x900/?education,study') no-repeat center center/cover;
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            color: #333;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
         }
 
         header {
-            text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         h1 {
             font-size: 36px;
-            color: #4caf50;
+            background: rgba(0, 0, 0, 0.7);
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 10px;
+            animation: slideIn 1s ease-out;
         }
 
         h2 {
             font-size: 28px;
             margin-top: 20px;
-        }
-
-        /* New Section Styling for Semester 4 */
-        .new-section {
-            margin-top: 40px;
-            background-color: #ffcccb;
-            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            display: inline-block;
+            padding: 10px 20px;
             border-radius: 8px;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
         }
 
-        .new-section h2 {
-            color: #e91e63;
-            font-size: 30px;
-        }
-
+        /* Container for buttons */
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            margin-top: 40px;
         }
 
+        /* Button styling */
         .button {
-            background-color: #4caf50;
-            color: white;
-            font-size: 24px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 20px;
             margin: 10px 0;
             padding: 15px 30px;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             text-align: center;
-            transition: background-color 0.3s, transform 0.3s;
-            animation: fadeInUp 0.6s ease forwards;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            animation: buttonAnimation 0.6s ease forwards;
             opacity: 0;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 260px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
         }
 
+        /* New Hover effect with color change and shadow scaling */
         .button:hover {
-            background-color: #388e3c;
-            transform: translateY(-2px);
+            background-color: #f0f0f0; /* Lighter background */
+            color: #333; /* Dark text */
+            transform: translateY(-5px) scale(1.1); /* Slightly more scaling */
+            box-shadow: 0px 12px 18px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
+        /* Icon styling */
+        .button img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effect for icon */
+        .button:hover img {
+            transform: scale(1.2); /* Slight scaling effect on hover */
+        }
+
+        /* New Section for Semester 4 */
+        .new-section {
+            background: url('https://source.unsplash.com/1200x400/?books,learning') no-repeat center center/cover;
+            padding: 40px;
+            border-radius: 10px;
+            color: white;
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Fade-in animation */
         @keyframes fadeInUp {
             0% {
                 transform: translateY(20px);
@@ -76,6 +117,69 @@
             100% {
                 transform: translateY(0);
                 opacity: 1;
+            }
+        }
+
+        /* Button Animation */
+        @keyframes buttonAnimation {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Slide-in Animation for Header */
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-50%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Marquee Styling */
+        .marquee-container {
+            background: #333;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 0;
+            margin-top: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .marquee {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            animation: marqueeEffect 15s linear infinite;
+        }
+
+        /* Keyframe for marquee effect */
+        @keyframes marqueeEffect {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .button {
+                width: 80%;
             }
         }
     </style>
@@ -89,10 +193,18 @@
         <h2>Programming Languages</h2>
         <p>Click on a button below to learn more about each programming language:</p>
         
-        <a class="button" href="java.html">Java</a>
-        <a class="button" href="newc.html">C</a>
-        <a class="button" href="new1.html">DSA</a>
-        <a class="button" href="python.html">Python</a>
+        <a class="button" href="java.html">
+            <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java Icon"> Java
+        </a>
+        <a class="button" href="newc.html">
+            <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png" alt="C Icon"> C
+        </a>
+        <a class="button" href="new1.html">
+            <img src="https://cdn-icons-png.flaticon.com/512/1010/1010429.png" alt="DSA Icon"> DSA
+        </a>
+        <a class="button" href="python.html">
+            <img src="https://cdn-icons-png.flaticon.com/512/1822/1822899.png" alt="Python Icon"> Python
+        </a>
     </div>
 
     <!-- New Section for Semester 4 -->
@@ -100,7 +212,16 @@
         <h2>Semester 4 Resources</h2>
         <p>Click below for resources related to Semester 4:</p>
 
-        <a class="button" href="sem4index.html">Semester 4 Content</a>
+        <a class="button" href="sem4index.html">
+            <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png" alt="Book Icon"> Semester 4 Content
+        </a>
+    </div>
+
+    <!-- Marquee at the Footer -->
+    <div class="marquee-container">
+        <div class="marquee">
+            Explore the latest resources, guides, and tips on your learning journey. Stay updated with our new content every week! 
+        </div>
     </div>
 </body>
 </html>
