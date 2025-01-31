@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus PDF Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #a8d5ba; /* Light green background */
+        }
+        
+        /* Padding applied to heading */
+        h2 { 
+            padding: 30px 0; 
+            font-size: 36px; 
+            color: #333; 
+        }
+        
+        .container { margin-top: 20px; }
+        .subject { 
+            margin: 10px; 
+            padding: 15px; 
+            border-radius: 8px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            width: 80%; 
+            margin: 10px auto; 
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .subject:hover {
+            transform: translateY(-5px);
+            background-color: #b2dfdb;
+        }
+        .subject button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .subject button:hover {
+            background-color: #45a049;
+            transform: scale(1.1); 
+        }
+        iframe { width: 80%; height: 500px; margin-top: 20px; border: 1px solid #ccc; }
+        .icon { margin-right: 10px; font-size: 30px; transition: transform 0.3s ease; }
+
+        /* Animations */
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateX(-30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        .subject {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .subject:hover .icon {
+            transform: rotate(10deg);
+        }
+    </style>
+</head>
+<body>
+    <h2>Syllabus PDF Viewer</h2>
+    <div class="container">
+        <!-- Numerical Methods -->
+        <div class="subject" style="background-color: #e3f2fd;">
+            <div><i class="fas fa-calculator icon"></i> <strong>Numerical Methods</strong></div>
+            <button onclick="viewPDF('maths.pdf')">View</button>
+        </div>
+        <!-- Data Warehousing -->
+        <div class="subject" style="background-color: #fce4ec;">
+            <div><i class="fas fa-database icon"></i> <strong>Data Warehousing and Data Mining</strong></div>
+            <button onclick="viewPDF('dw.pdf')">View</button>
+        </div>
+        <!-- Accounting -->
+        <div class="subject" style="background-color: #f1f8e9;">
+            <div><i class="fas fa-money-check-alt icon"></i> <strong>Accounting and Economics for Engineers</strong></div>
+            <button onclick="viewPDF('aee.pdf')">View</button>
+        </div>
+        <!-- Design Analysis & Algorithms -->
+        <div class="subject" style="background-color: #ffecb3;">
+            <div><i class="fas fa-cogs icon"></i> <strong>Design Analysis & Algorithms</strong></div>
+            <button onclick="viewPDF('daa.pdf')">View</button>
+        </div>
+        <!-- Operating Systems -->
+        <div class="subject" style="background-color: #e8f5e9;">
+            <div><i class="fas fa-desktop icon"></i> <strong>Operating Systems</strong></div>
+            <button onclick="viewPDF('os.pdf')">View</button>
+        </div>
+    </div>
+    <iframe id="pdfViewer" src="" hidden></iframe>
+    
+    <script>
+        function viewPDF(fileName) {
+            const url = fileName; 
+            const viewer = document.getElementById("pdfViewer");
+            viewer.src = url; 
+            viewer.hidden = false;
+        }
+    </script>
+</body>
+</html>
