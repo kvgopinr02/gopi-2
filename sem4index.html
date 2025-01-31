@@ -68,7 +68,7 @@
 
         /* Image Styling */
         .subject-box img {
-            width: 80px; /* Adjust size as needed */
+            width: 80px;
             height: 80px;
             object-fit: contain;
             margin-bottom: 10px;
@@ -84,6 +84,37 @@
             color: #333;
             text-decoration: none;
             font-weight: bold;
+        }
+
+        /* Syllabus Button */
+        .syllabus-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+            padding: 12px 25px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(90deg, #4caf50, #2e7d32);
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .syllabus-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Syllabus Button Image */
+        .syllabus-btn img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
         }
 
         /* Fade-in Animation */
@@ -145,6 +176,12 @@
             </a>
         </div>
     </div>
+
+    <!-- Syllabus Button with Clipboard Icon -->
+    <a href="pdfs.html" class="syllabus-btn">
+        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965427.png" alt="Clipboard Icon">
+        View Syllabus
+    </a>
 
 </body>
 </html>
