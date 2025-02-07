@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester Content</title>
+    <meta name="description" content="Semester-2 subjects including Probability and Statistics, Applied Physics, Switching Theory and Logic, and C Language.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Page Styles */
+        body {
+            background: linear-gradient(to right, #d0f4e1, #b2e3c7);
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #47a5b3, #70d0ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding: 10px 30px;
+            border: 3px solid #47a5b3;
+            border-radius: 15px;
+            animation: fadeIn 1s ease-in-out, glow 1.5s infinite alternate;
+        }
+
+        /* Subject Box Container */
+        .subject-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        /* Subject Box */
+        .subject-box {
+            background-color: #fff;
+            padding: 20px;
+            font-size: 18px;
+            width: 220px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .subject-box:hover {
+            transform: scale(1.07);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Image Styling */
+        .subject-box i {
+            font-size: 50px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .subject-box:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Colorful Icons */
+        .fa-percent {
+            color: #ff6347; /* Tomato */
+        }
+        .fa-cogs {
+            color: #32cd32; /* Lime Green */
+        }
+        .fa-plug {
+            color: #ff4500; /* Orange Red */
+        }
+        .fa-code {
+            color: #4169e1; /* Royal Blue */
+        }
+
+        /* Syllabus Button */
+        .syllabus-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+            padding: 12px 25px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(90deg, #47a5b3, #70d0ad);
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .syllabus-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Syllabus Button Image */
+        .syllabus-btn i {
+            font-size: 30px;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .subject-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Semester-2 Subjects</h1>
+    </header>
+
+    <div class="subject-container">
+        <!-- Probability and Statistics -->
+        <a href="unit.html" class="subject-box" title="View Probability and Statistics Content">
+            <i class="fas fa-percent"></i>
+            Probability and Statistics
+        </a>
+
+        <!-- Applied Physics -->
+        <a href="unitps.html" class="subject-box" title="View Applied Physics Content">
+            <i class="fas fa-cogs"></i>
+            Applied Physics
+        </a>
+
+        <!-- Switching Theory and Logic -->
+        <a href="unitdwdh.html" class="subject-box" title="View Switching Theory and Logic Content">
+            <i class="fas fa-plug"></i>
+            Switching Theory and Logic Design
+        </a>
+
+        <!-- C Language -->
+        <a href="unitdaa.html" class="subject-box" title="View C Language Content">
+            <i class="fas fa-code"></i>
+            C Language
+        </a>
+    </div>
+
+    <!-- Syllabus Button with Clipboard Icon -->
+    <a href="sem2pdfs.html" class="syllabus-btn" title="View Complete Syllabus">
+        <i class="fas fa-file-alt"></i>
+        View Syllabus
+    </a>
+
+</body>
+</html>
