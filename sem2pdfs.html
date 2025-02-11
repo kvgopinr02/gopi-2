@@ -3,180 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open and Download Files</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Syllabus PDF Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #c9f8cb; /* Light green background */
-            margin: 0;
-            padding: 20px;
-            color: #333;
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #a8d5ba; /* Light green background */
         }
-
-        h1 {
-            color: #16c33b; /* Darker green for the header */
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 30px;
-            animation: fadeIn 1s ease-out; /* Animation for header */
+        
+        h2 { 
+            padding: 30px 0; 
+            font-size: 36px; 
+            color: #333; 
         }
-
-        .container {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .unit {
-            background-color: #81c784; /* Light green for units */
-            color: white;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 20px;
+        
+        .container { margin-top: 20px; }
+        .subject { 
+            margin: 10px; 
+            padding: 15px; 
+            border-radius: 8px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            width: 80%; 
+            margin: 10px auto; 
             cursor: pointer;
-            width: 300px;
-            margin: 20px auto;
-            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
-        }
-
-        .unit:hover {
-            background-color: #66bb6a; /* Darker green on hover */
-            transform: translateY(-10px) scale(1.05); /* Subtle scaling effect */
-        }
-
-        .btn {
-            padding: 12px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 10px;
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
-
-        .download-btn {
-            background: linear-gradient(135deg, #66bb6a, #388e3c); /* Green gradient for download button */
+        .subject:hover {
+            transform: translateY(-5px);
+            background-color: #b2dfdb;
+        }
+        .subject button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
             color: white;
-        }
-
-        .download-btn:hover {
-            background: linear-gradient(135deg, #388e3c, #66bb6a);
-            transform: scale(1.1); /* Scale up slightly on hover */
-        }
-
-        .view-btn {
-            background: linear-gradient(135deg, #81c784, #aed581); /* Light green gradient for view button */
-            color: white;
-        }
-
-        .view-btn:hover {
-            background: linear-gradient(135deg, #aed581, #81c784);
-            transform: scale(1.1); /* Scale up slightly on hover */
-        }
-
-        #pdf-container {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        #pdf-frame {
-            width: 80%;
-            height: 600px;
             border: none;
-            display: none;
-            transition: opacity 0.5s ease-in-out;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .subject button:hover {
+            background-color: #45a049;
+            transform: scale(1.1); 
+        }
+        iframe { width: 80%; height: 500px; margin-top: 20px; border: 1px solid #ccc; }
+        .icon { margin-right: 10px; font-size: 30px; transition: transform 0.3s ease; }
+
+        /* Animations */
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateX(-30px); }
+            100% { opacity: 1; transform: translateX(0); }
         }
 
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            padding: 15px;
-            background-color: #388e3c; /* Darker green footer */
-            color: white;
-            font-size: 14px;
+        .subject {
+            animation: slideIn 0.5s ease-out;
         }
 
-        .icon {
-            margin-right: 8px;
+        .subject:hover .icon {
+            transform: rotate(10deg);
         }
-
-        /* Fade-in animation for elements */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
     </style>
 </head>
 <body>
-
-<header>
-    <h1>Open and Download Files</h1>
-</header>
-
-<div class="container">
-    <!-- Unit 1 -->
-    <div class="unit">
-        <p> Probability and Statistics </p>
-        <button class="btn download-btn" onclick="downloadFile('maths2.pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('maths2.pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
+    <h2>Syllabus PDF Viewer</h2>
+    <div class="container">
+        <!-- Probability and Statistics -->
+        <div class="subject" style="background-color: #e3f2fd;">
+            <div><i class="fas fa-chart-line icon"></i> <strong>Probability and Statistics</strong></div>
+            <button onclick="viewPDF('maths2.pdf')">View</button>
+        </div>
+        <!-- Switching Theory -->
+        <div class="subject" style="background-color: #fce4ec;">
+            <div><i class="fas fa-toggle-on icon"></i> <strong>Switching Theory and Logic Gates </strong></div>
+            <button onclick="viewPDF('stld.pdf')">View</button>
+        </div>
+        <!-- C Language -->
+        <div class="subject" style="background-color: #f1f8e9;">
+            <div><i class="fas fa-code icon"></i> <strong>C Language</strong></div>
+            <button onclick="viewPDF('clang.pdf')">View</button>
+        </div>
+        <!-- Applied Physics -->
+        <div class="subject" style="background-color: #ffecb3;">
+            <div><i class="fas fa-atom icon"></i> <strong>Applied Physics</strong></div>
+            <button onclick="viewPDF('ps.pdf')">View</button>
+        </div>
     </div>
-
-    <!-- Unit 2 -->
-    <div class="unit">
-        <p>C Language</p>
-        <button class="btn download-btn" onclick="downloadFile('clang.pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('clang.pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
-    </div>
-
-    <!-- Unit 3 -->
-    <div class="unit">
-        <p>Switching Theory and Logic Design</p>
-        <button class="btn download-btn" onclick="downloadFile('stld.pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('stld.pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
-    </div>
-
-    <!-- Unit 4 -->
-    <div class="unit">
-        <p>Applied Physics</p>
-        <button class="btn download-btn" onclick="downloadFile('ps.pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('ps.pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
-    </div>
-</div>
-
-<!-- PDF Display Section -->
-<div id="pdf-container">
-    <iframe id="pdf-frame"></iframe>
-</div>
-
-<footer>
-    &copy; 2025 @open files in desktop only and you can download files desktop or mobile. Credit goes to V and G.
-</footer>
-
-<script>
-    function downloadFile(file) {
-        var link = document.createElement("a");
-        link.href = file;
-        link.download = file;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    function openFile(file) {
-        var pdfFrame = document.getElementById("pdf-frame");
-        pdfFrame.src = file;
-        pdfFrame.style.display = "block";
-    }
-</script>
-
+    <iframe id="pdfViewer" src="" hidden></iframe>
+    
+    <script>
+        function viewPDF(fileName) {
+            const viewer = document.getElementById("pdfViewer");
+            if (viewer.src.endsWith(fileName)) {
+                viewer.hidden = !viewer.hidden;
+            } else {
+                viewer.hidden = false;
+                viewer.src = fileName;
+            }
+        }
+    </script>
 </body>
 </html>
+
