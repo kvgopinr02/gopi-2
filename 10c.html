@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stack Algorithm Slideshow</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    .title {
+      background-color: #2E8B57;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .algorithm-box {
+      background-color: #ffffff;
+      border: 2px solid #2E8B57;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      max-width: 600px;
+      margin: auto;
+      font-size: 18px;
+      color: #333;
+      text-align: left;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #e8f5e9;
+      border: 1px solid #b2dfdb;
+      overflow: auto;
+    }
+    .copy-button {
+      background-color: #2E8B57;
+      color: white;
+      border: 2px solid #2E8B57;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      transition: all 0.3s ease;
+    }
+    .copy-button:hover {
+      background-color: #21a1f1;
+      border-color: #21a1f1;
+      transform: scale(1.05);
+    }
+    .copy-message {
+      display: none;
+      margin-top: 10px;
+      color: #2E8B57;
+      font-weight: bold;
+    }
+    .arrow {
+      cursor: pointer;
+      font-size: 24px;
+      color: #2E8B57;
+      margin: 20px;
+    }
+    .code-title {
+      font-size: 24px;
+      color: #2E8B57;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .slideshow-container {
+      max-width: 800px;
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .mySlides {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="title">Stack Using Array (C, Python, Java)</div>
+
+<div class="slideshow-container">
+  <!-- C Code -->
+  <div class="mySlides">
+    <div class="algorithm-box">
+      <div class="code-title">C Code - Stack</div>
+      <pre id="stackC">
+#include &lt;stdio.h&gt;
+#define max 10
+int stack[max];
+int top = -1;
+
+void push(int n) {
+    if(top == max - 1) {
+        printf("stack is overflow\n");
+    } else {
+        top++;
+        stack[top] = n;
+    }
+}
+
+int pop() {
+    if(top == -1) {
+        printf("stack is underflow\n");
+    } else {
+        printf("popped value %d\n", stack[top]);
+        top--;
+    }
+}
+
+void peek() {
+    if(top == -1) {
+        printf("stack is underflow\n");
+    } else {
+        printf("peek value is %d\n", stack[top]);
+    }
+}
+
+void display() {
+    if(top == -1) {
+        printf("stack is underflow.\n");
+    } else {
+        for (int i = top; i >= 0; i--) {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int choice, x;
+    while(1) {
+        printf("1.push()\n2.pop()\n3.display\n4.peek()\n5.exit\n");
+        scanf("%d", &choice);
+        switch(choice) {
+            case 1:
+                printf("enter element: ");
+                scanf("%d", &x);
+                push(x);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                peek();
+                break;
+            case 5:
+                return 0;
+        }
+    }
+}
+      </pre>
+      <button class="copy-button" onclick="copyCode('stackC')">Copy Code</button>
+      <div id="copyMessageC" class="copy-message">Code copied to clipboard!</div>
+    </div>
+  </div>
+
+  <!-- Python Code -->
+  <div class="mySlides">
+    <div class="algorithm-box">
+      <div class="code-title">Python Code - Stack</div>
+      <pre id="stackPython">
+stack = []
+
+def push(n):
+    if len(stack) >= 10:
+        print("Stack overflow")
+    else:
+        stack.append(n)
+
+def pop():
+    if not stack:
+        print("Stack underflow")
+    else:
+        print("Popped value:", stack.pop())
+
+def peek():
+    if not stack:
+        print("Stack underflow")
+    else:
+        print("Peek value is:", stack[-1])
+
+def display():
+    if not stack:
+        print("Stack underflow")
+    else:
+        print("Stack:", stack[::-1])
+
+while True:
+    print("1.push()\n2.pop()\n3.display\n4.peek()\n5.exit")
+    choice = int(input("Enter choice: "))
+    if choice == 1:
+        x = int(input("Enter element: "))
+        push(x)
+    elif choice == 2:
+        pop()
+    elif choice == 3:
+        display()
+    elif choice == 4:
+        peek()
+    elif choice == 5:
+        break
+      </pre>
+      <button class="copy-button" onclick="copyCode('stackPython')">Copy Code</button>
+      <div id="copyMessagePython" class="copy-message">Code copied to clipboard!</div>
+    </div>
+  </div>
+
+  <!-- Java Code -->
+  <div class="mySlides">
+    <div class="algorithm-box">
+      <div class="code-title">Java Code - Stack</div>
+      <pre id="stackJava">
+import java.util.Scanner;
+
+public class StackExample {
+    static int max = 10;
+    static int[] stack = new int[max];
+    static int top = -1;
+
+    static void push(int n) {
+        if(top == max - 1) {
+            System.out.println("Stack overflow");
+        } else {
+            stack[++top] = n;
+        }
+    }
+
+    static void pop() {
+        if(top == -1) {
+            System.out.println("Stack underflow");
+        } else {
+            System.out.println("Popped value: " + stack[top--]);
+        }
+    }
+
+    static void peek() {
+        if(top == -1) {
+            System.out.println("Stack underflow");
+        } else {
+            System.out.println("Peek value is: " + stack[top]);
+        }
+    }
+
+    static void display() {
+        if(top == -1) {
+            System.out.println("Stack underflow");
+        } else {
+            for(int i = top; i >= 0; i--) {
+                System.out.print(stack[i] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while(true) {
+            System.out.println("1.push()\n2.pop()\n3.display\n4.peek()\n5.exit");
+            int choice = sc.nextInt();
+            switch(choice) {
+                case 1:
+                    System.out.print("Enter element: ");
+                    int x = sc.nextInt();
+                    push(x);
+                    break;
+                case 2: pop(); break;
+                case 3: display(); break;
+                case 4: peek(); break;
+                case 5: return;
+            }
+        }
+    }
+}
+      </pre>
+      <button class="copy-button" onclick="copyCode('stackJava')">Copy Code</button>
+      <div id="copyMessageJava" class="copy-message">Code copied to clipboard!</div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <span class="arrow" onclick="plusSlides(-1)">&#10094;</span>
+  <span class="arrow" onclick="plusSlides(1)">&#10095;</span>
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  const slides = document.getElementsByClassName("mySlides");
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex].style.display = "block";
+}
+
+function plusSlides(n) {
+  const slides = document.getElementsByClassName("mySlides");
+  slideIndex += n;
+  if (slideIndex >= slides.length) slideIndex = 0;
+  if (slideIndex < 0) slideIndex = slides.length - 1;
+  showSlides();
+}
+
+function copyCode(codeId) {
+  const code = document.getElementById(codeId).innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    const messageMap = {
+      'stackC': 'C',
+      'stackPython': 'Python',
+      'stackJava': 'Java'
+    };
+    const messageId = 'copyMessage' + messageMap[codeId];
+    document.getElementById(messageId).style.display = 'block';
+    setTimeout(() => {
+      document.getElementById(messageId).style.display = 'none';
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>

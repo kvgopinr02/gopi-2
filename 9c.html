@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Merge Sort Algorithm Slideshow</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    .title {
+      background-color: #2E8B57;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .algorithm-box {
+      background-color: #ffffff;
+      border: 2px solid #2E8B57;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      max-width: 600px;
+      margin: auto;
+      font-size: 18px;
+      color: #333;
+      text-align: left;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #e8f5e9;
+      border: 1px solid #b2dfdb;
+      overflow: auto;
+    }
+    .copy-button {
+      background-color: #2E8B57;
+      color: white;
+      border: 2px solid #2E8B57;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      transition: all 0.3s ease;
+    }
+    .copy-button:hover {
+      background-color: #21a1f1;
+      border-color: #21a1f1;
+      transform: scale(1.05);
+    }
+    .copy-message {
+      display: none;
+      margin-top: 10px;
+      color: #2E8B57;
+      font-weight: bold;
+    }
+    .arrow {
+      cursor: pointer;
+      font-size: 24px;
+      color: #2E8B57;
+      margin: 20px;
+    }
+    .code-title {
+      font-size: 24px;
+      color: #2E8B57;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .slideshow-container {
+      max-width: 800px;
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .mySlides {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="title">Merge Sort in C, Python, and Java</div>
+
+<div class="slideshow-container">
+
+  <!-- C Code Slide -->
+  <div class="mySlides">
+    <div class="algorithm-box">
+      <div class="code-title">C Code - Merge Sort</div>
+      <pre id="mergeC">
+#include &lt;stdio.h&gt;
+
+void read(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+}
+
+void display(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void merge(int arr[], int low, int mid, int high) {
+    int left = low, right = mid + 1;
+    int c[high + 1];
+    int k = low;
+    while (left <= mid && right <= high) {
+        if (arr[left] <= arr[right])
+            c[k++] = arr[left++];
+        else
+            c[k++] = arr[right++];
+    }
+    while (left <= mid) c[k++] = arr[left++];
+    while (right <= high) c[k++] = arr[right++];
+    for (int i = low; i <= high; i++)
+        arr[i] = c[i];
+}
+
+void mergesort(int arr[], int low, int high) {
+    if (low >= high) return;
+    int mid = (low + high) / 2;
+    mergesort(arr, low, mid);
+    mergesort(arr, mid + 1, high);
+    merge(arr, low, mid, high);
+}
+
+int main() {
+    int n;
+    printf("Enter size of array: ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter array elements: ");
+    read(arr, n);
+    display(arr, n);
+    mergesort(arr, 0, n - 1);
+    printf("Sorted array:\n");
+    display(arr, n);
+    return 0;
+}
+      </pre>
+      <button class="copy-button" onclick="copyCode('mergeC')">Copy Code</button>
+      <div id="copyMessageC" class="copy-message">Code copied to clipboard!</div>
+    </div>
+  </div>
+
+  <!-- Python Code Slide -->
+  <div class="mySlides">
+    <div class="algorithm-box">
+      <div class="code-title">Python Code - Merge Sort</div>
+      <pre id="mergePython">
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        L = arr[:mid]
+        R = arr[mid:]
+
+        merge_sort(L)
+        merge_sort(R)
+
+        i = j = k = 0
+        while i &lt; len(L) and j &lt; len(R):
+            if L[i] &lt;= R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+
+        while i &lt; len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+        while j &lt; len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+
+n = int(input("Enter size of array: "))
+arr = list(map(int, input("Enter array elements: ").split()))
+print("Original array:", arr)
+merge_sort(arr)
+print("Sorted array:", arr)
+      </pre>
+      <button class="copy-button" onclick="copyCode('mergePython')">Copy Code</button>
+      <div id="copyMessagePython" class="copy-message">Code copied to clipboard!</div>
+    </div>
+  </div>
+
+  <!-- Java Code Slide -->
+  <div class="mySlides">
+    <div class="algorithm-box">
+      <div class="code-title">Java Code - Merge Sort</div>
+      <pre id="mergeJava">
+import java.util.*;
+
+public class MergeSort {
+
+    public static void mergeSort(int[] arr, int low, int high) {
+        if (low &lt; high) {
+            int mid = (low + high) / 2;
+            mergeSort(arr, low, mid);
+            mergeSort(arr, mid + 1, high);
+            merge(arr, low, mid, high);
+        }
+    }
+
+    public static void merge(int[] arr, int low, int mid, int high) {
+        int[] temp = new int[high - low + 1];
+        int i = low, j = mid + 1, k = 0;
+
+        while (i &lt;= mid && j &lt;= high) {
+            if (arr[i] &lt;= arr[j]) temp[k++] = arr[i++];
+            else temp[k++] = arr[j++];
+        }
+
+        while (i &lt;= mid) temp[k++] = arr[i++];
+        while (j &lt;= high) temp[k++] = arr[j++];
+
+        for (i = low, k = 0; i &lt;= high; i++, k++) {
+            arr[i] = temp[k];
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter size of array: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter array elements: ");
+        for (int i = 0; i &lt; n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println("Original array: " + Arrays.toString(arr));
+        mergeSort(arr, 0, n - 1);
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+    }
+}
+      </pre>
+      <button class="copy-button" onclick="copyCode('mergeJava')">Copy Code</button>
+      <div id="copyMessageJava" class="copy-message">Code copied to clipboard!</div>
+    </div>
+  </div>
+
+  <!-- Arrows -->
+  <span class="arrow" onclick="plusSlides(-1)">&#10094;</span>
+  <span class="arrow" onclick="plusSlides(1)">&#10095;</span>
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  const slides = document.getElementsByClassName("mySlides");
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex].style.display = "block";
+}
+
+function plusSlides(n) {
+  const slides = document.getElementsByClassName("mySlides");
+  slideIndex += n;
+  if (slideIndex >= slides.length) slideIndex = 0;
+  if (slideIndex < 0) slideIndex = slides.length - 1;
+  showSlides();
+}
+
+function copyCode(codeId) {
+  const code = document.getElementById(codeId).innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    const messageMap = {
+      'mergeC': 'C',
+      'mergePython': 'Python',
+      'mergeJava': 'Java'
+    };
+    const messageId = 'copyMessage' + messageMap[codeId];
+    document.getElementById(messageId).style.display = 'block';
+    setTimeout(() => {
+      document.getElementById(messageId).style.display = 'none';
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
