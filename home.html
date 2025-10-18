@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop & Play - E-Commerce</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f8f8f8;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 40px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: navbarSlide 1.2s ease-out;
+    }
+
+    @keyframes navbarSlide {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: white;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #00c3ff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1em;
+      padding: 8px 14px;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(90deg, #00c3ff, #007bff);
+      z-index: -1;
+      transition: 0.4s;
+      border-radius: 8px;
+    }
+
+    .nav-links a:hover::before {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      animation: bgChange 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes bgChange {
+      0%   { background-image: url('https://images.unsplash.com/photo-1556742393-d75f468bfcb0'); }
+      25%  { background-image: url('https://images.unsplash.com/photo-1585386959984-a41552231693'); }
+      50%  { background-image: url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f'); }
+      75%  { background-image: url('https://images.unsplash.com/photo-1542831371-d531d36971e6'); }
+      100% { background-image: url('https://images.unsplash.com/photo-1556742393-d75f468bfcb0'); }
+    }
+
+    .hero h1 {
+      font-size: 3.5em;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+      animation: fadeUp 1.5s ease-in;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Start Game Button */
+    .game-btn {
+      margin-top: 20px;
+      padding: 14px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #007bff, #00c3ff);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 195, 255, 0.6);
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite alternate;
+    }
+
+    .game-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(0, 195, 255, 1);
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    /* Product Section */
+    .products {
+      padding: 60px 40px;
+      text-align: center;
+      background: #f7f9fc;
+    }
+
+    .products h2 {
+      font-size: 2.2em;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .product-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 15px;
+      width: 220px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      border-radius: 15px 15px 0 0;
+      object-fit: cover;
+    }
+
+    .product h3 {
+      color: #333;
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+
+    .product p {
+      color: #777;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background: #007bff;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Shop & Play</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Products</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Welcome to Shop & Play</h1>
+    <button class="game-btn" onclick="window.location.href='play.html'">🎮 Start Game</button>
+  </section>
+
+  <section class="products">
+    <h2>Our Featured Products</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1606813902912-9a6b2d06a76b?w=500" alt="Smart Watch">
+        <h3>Smart Watch Pro</h3>
+        <p>$99.99</p>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?w=500" alt="Headphones">
+        <h3>Wireless Headphones</h3>
+        <p>$79.99</p>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="Sneakers">
+        <h3>Stylish Sneakers</h3>
+        <p>$59.99</p>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1585386959984-a41552231693?w=500" alt="Gaming Mouse">
+        <h3>RGB Gaming Mouse</h3>
+        <p>$49.99</p>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="Camera">
+        <h3>Professional Camera</h3>
+        <p>$499.99</p>
+      </div>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0641?w=500" alt="Laptop">
+        <h3>Ultra Slim Laptop</h3>
+        <p>$899.99</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Shop & Play. All rights reserved.
+  </footer>
+
+</body>
+</html>
