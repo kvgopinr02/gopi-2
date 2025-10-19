@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester Subjects</title>
+    <meta name="description" content="Subjects including Discrete Mathematics, Java, DSA, Computer Organization, and DBMS.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Page Styles */
+        body {
+            background: linear-gradient(270deg, #d0f4e1, #b2e3c7);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            animation: pageFade 1s ease-in-out;
+        }
+
+        @keyframes pageFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #47a5b3, #70d0ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding: 10px 30px;
+            border: 3px solid #47a5b3;
+            border-radius: 15px;
+            animation: fadeIn 1s ease-in-out, glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px #47a5b3; }
+            to { box-shadow: 0 0 25px #70d0ad; }
+        }
+
+        /* Subject Box Container */
+        .subject-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        /* Subject Box */
+        .subject-box {
+            background-color: #fff;
+            padding: 20px;
+            font-size: 18px;
+            width: 220px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .subject-box:nth-child(1) { animation-delay: 0.2s; }
+        .subject-box:nth-child(2) { animation-delay: 0.4s; }
+        .subject-box:nth-child(3) { animation-delay: 0.6s; }
+        .subject-box:nth-child(4) { animation-delay: 0.8s; }
+        .subject-box:nth-child(5) { animation-delay: 1s; }
+
+        .subject-box:hover {
+            transform: scale(1.07);
+            box-shadow: 0px 0px 20px rgba(71, 165, 179, 0.5);
+        }
+
+        /* Image/Icon Styling */
+        .subject-box i {
+            font-size: 50px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .subject-box:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Colorful Icons */
+        .fa-superscript { color: #ff6347; } /* Discrete Mathematics */
+        .fa-coffee { color: #ffb347; } /* Java */
+        .fa-database { color: #4169e1; } /* DBMS */
+        .fa-network-wired { color: #32cd32; } /* CO */
+        .fa-project-diagram { color: #8a2be2; } /* DSA */
+
+        /* Syllabus Button */
+        .syllabus-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+            padding: 12px 25px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(90deg, #47a5b3, #70d0ad);
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .syllabus-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .syllabus-btn i {
+            font-size: 30px;
+        }
+
+        @keyframes fadeInUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .subject-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Semester Subjects</h1>
+    </header>
+
+    <div class="subject-container">
+        <!-- Discrete Mathematics -->
+        <a href="dms.html" class="subject-box" title="View Discrete Mathematics Content">
+            <i class="fas fa-superscript"></i>
+            Discrete Mathematics (DMS)
+        </a>
+
+        <!-- Java -->
+        <a href="java.html" class="subject-box" title="View Java Content">
+            <i class="fas fa-coffee"></i>
+            Java Programming
+        </a>
+
+        <!-- Data Structures & Algorithms -->
+        <a href="dsa.html" class="subject-box" title="View DSA Content">
+            <i class="fas fa-project-diagram"></i>
+            Data Structures & Algorithms (DSA)
+        </a>
+
+        <!-- Computer Organization -->
+        <a href="co.html" class="subject-box" title="View Computer Organization Content">
+            <i class="fas fa-network-wired"></i>
+            Computer Organization (CO)
+        </a>
+
+        <!-- DBMS -->
+        <a href="dbms.html" class="subject-box" title="View DBMS Content">
+            <i class="fas fa-database"></i>
+            Database Management Systems (DBMS)
+        </a>
+    </div>
+
+    <!-- Syllabus Button -->
+    <a href="syllabus.html" class="syllabus-btn" title="View Complete Syllabus">
+        <i class="fas fa-file-alt"></i>
+        View Syllabus
+    </a>
+
+    <footer>© 2025 Department of CSE | Semester Materials</footer>
+
+</body>
+</html>

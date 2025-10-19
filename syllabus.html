@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus PDF Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Arial', sans-serif; 
+            text-align: center; 
+            background: linear-gradient(120deg, #a8e6cf, #dcedc1);
+            margin: 0;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 { 
+            padding: 30px 0; 
+            font-size: 40px; 
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container { 
+            margin-top: 20px; 
+        }
+
+        .subject { 
+            margin: 15px auto; 
+            padding: 18px; 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            width: 80%; 
+            background-color: white;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .subject:hover {
+            transform: translateY(-5px);
+            background-color: #e0f7fa;
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .subject button {
+            padding: 8px 18px;
+            background: linear-gradient(90deg, #47a5b3, #70d0ad);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .subject button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(90deg, #3c9a9e, #58c48a);
+        }
+
+        .icon {
+            margin-right: 12px;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .subject:hover .icon {
+            transform: rotate(10deg);
+        }
+
+        iframe { 
+            width: 80%; 
+            height: 500px; 
+            margin-top: 25px; 
+            border: 2px solid #70d0ad; 
+            border-radius: 10px; 
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateX(-30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .subject { 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 10px;
+                width: 90%;
+            }
+            iframe { width: 95%; height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Semester Syllabus PDFs</h2>
+
+    <div class="container">
+        <!-- Discrete Mathematics -->
+        <div class="subject">
+            <div><i class="fas fa-superscript icon" style="color:#ff6347;"></i> 
+                <strong>Discrete Mathematics (DMS)</strong>
+            </div>
+            <button onclick="viewPDF('dms.pdf')">View</button>
+        </div>
+
+        <!-- Java -->
+        <div class="subject">
+            <div><i class="fas fa-coffee icon" style="color:#ffb347;"></i> 
+                <strong>Java Programming</strong>
+            </div>
+            <button onclick="viewPDF('java.pdf')">View</button>
+        </div>
+
+        <!-- Data Structures & Algorithms -->
+        <div class="subject">
+            <div><i class="fas fa-project-diagram icon" style="color:#8a2be2;"></i> 
+                <strong>Data Structures & Algorithms (DSA)</strong>
+            </div>
+            <button onclick="viewPDF('dsa.pdf')">View</button>
+        </div>
+
+        <!-- Computer Organization -->
+        <div class="subject">
+            <div><i class="fas fa-network-wired icon" style="color:#32cd32;"></i> 
+                <strong>Computer Organization (CO)</strong>
+            </div>
+            <button onclick="viewPDF('co.pdf')">View</button>
+        </div>
+
+        <!-- DBMS -->
+        <div class="subject">
+            <div><i class="fas fa-database icon" style="color:#4169e1;"></i> 
+                <strong>Database Management Systems (DBMS)</strong>
+            </div>
+            <button onclick="viewPDF('dbms.pdf')">View</button>
+        </div>
+    </div>
+
+    <iframe id="pdfViewer" src="" hidden></iframe>
+
+    <footer>© 2025 Department of CSE | Semester Materials</footer>
+
+    <script>
+        function viewPDF(fileName) {
+            const viewer = document.getElementById("pdfViewer");
+            if (viewer.src.endsWith(fileName)) {
+                viewer.hidden = !viewer.hidden;
+            } else {
+                viewer.hidden = false;
+                viewer.src = fileName;
+            }
+        }
+    </script>
+
+</body>
+</html>
