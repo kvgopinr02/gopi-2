@@ -1,0 +1,187 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Preview and Download</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #c6f7d2;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #2b6e2b;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .unit {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      width: 280px;
+      transition: transform 0.3s ease;
+    }
+    .unit:hover {
+      transform: translateY(-5px);
+    }
+    .unit img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn {
+      display: inline-block;
+      margin: 8px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .open-btn {
+      background: #ff9800;
+      color: white;
+    }
+    .open-btn:hover {
+      background: #e68900;
+    }
+    .download-btn {
+      background: #007bff;
+      color: white;
+    }
+    .download-btn:hover {
+      background: #0056b3;
+    }
+    footer {
+      margin-top: 40px;
+      background: #2b6e2b;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Open and Download Files with Preview</h1>
+
+  <div class="container">
+    <!-- Example file units -->
+    <div class="unit">
+      <h3>AI-UNIT-1 (1)</h3>
+      <img id="preview1" alt="AI-UNIT-1 (1) Preview">
+      <br>
+      <a href="AI-UNIT-1 (1).pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="AI-UNIT-1 (1).pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3>AI-UNIT-2</h3>
+      <img id="preview2" alt="AI-UNIT-2 Preview">
+      <br>
+      <a href="AI-UNIT-2.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="AI-UNIT-2.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3>AI-UNIT-3 </h3>
+      <img id="preview3" alt="AI-UNIT-3(PART1) (1) Preview">
+      <br>
+      <a href="AI-UNIT-3(PART1) (1).pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="AI-UNIT-3(PART1) (1).pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    
+
+    <div class="unit">
+      <h3>AI-UNIT-3(PART2) </h3>
+      <img id="preview4" alt="AI-UNIT-3(PART2) Preview">
+      <br>
+      <a href="AI-UNIT-3(PART2).pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="AI-UNIT-3(PART2).pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3>AI-UNIT 4 Part-1</h3>
+      <img id="preview5" alt="AI-UNIT -4-Part-1 (1) Preview">
+      <br>
+      <a href="AI-UNIT -4-Part-1 (1).pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="AI-UNIT -4-Part-1 (1).pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3>AI-Unit-4-Part-2</h3>
+      <img id="preview6" alt="AI-Unit-4-Part-2 (1) Preview">
+      <br>
+      <a href="AI-Unit-4-Part-2 (1).pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="AI-Unit-4-Part-2 (1).pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+     <div class="unit">
+      <h3>AI-Unit 5</h3>
+      <img id="preview7" alt="AI-Unit 5 Preview">
+      <br>
+      <a href="AI-Unit 5.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="AI-Unit 5.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2025 Open files on desktop or mobile. Credit: V and G.
+  </footer>
+
+  <script>
+    // PDF.js setup
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js";
+
+    // List of PDFs with preview image IDs
+    const files = [
+      { id: "preview1", file: "AI-UNIT-1 (1).pdf" },
+      { id: "preview2", file: "AI-UNIT-2.pdf" },
+      { id: "preview3", file: "AI-UNIT-3(PART1) (1).pdf" },
+      { id: "preview4", file: "AI-UNIT-3(PART2).pdf" },
+      { id: "preview5", file: "AI-UNIT -4-Part-1 (1).pdf" },
+      { id: "preview6", file: "AI-Unit-4-Part-2 (1).pdf" },
+      { id: "preview7", file: "AI-Unit 5.pdf" },
+    ];
+
+    files.forEach(item => {
+      const loadingTask = pdfjsLib.getDocument(item.file);
+      loadingTask.promise.then(pdf => {
+        pdf.getPage(1).then(page => {
+          const scale = 1;
+          const viewport = page.getViewport({ scale: scale });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          const renderContext = { canvasContext: context, viewport: viewport };
+          page.render(renderContext).promise.then(() => {
+            document.getElementById(item.id).src = canvas.toDataURL();
+          });
+        });
+      }).catch(err => {
+        console.error("Error loading PDF:", item.file, err);
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
