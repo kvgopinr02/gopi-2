@@ -1,213 +1,204 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open and Download Files</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #c9f8cb; /* Light green background */
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-        h1 {
-            color: #16c33b; /* Darker green for the header */
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 30px;
-            animation: fadeIn 1s ease-out; /* Animation for header */
-        }
-
-        .container {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .unit {
-            background-color: #81c784; /* Light green for units */
-            color: white;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 20px;
-            cursor: pointer;
-            width: 300px;
-            margin: 20px auto;
-            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
-        }
-
-        .unit:hover {
-            background-color: #66bb6a; /* Darker green on hover */
-            transform: translateY(-10px) scale(1.05); /* Subtle scaling effect */
-        }
-
-        .btn {
-            padding: 12px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 10px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .download-btn {
-            background: linear-gradient(135deg, #66bb6a, #388e3c); /* Green gradient for download button */
-            color: white;
-        }
-
-        .download-btn:hover {
-            background: linear-gradient(135deg, #388e3c, #66bb6a);
-            transform: scale(1.1); /* Scale up slightly on hover */
-        }
-
-        .view-btn {
-            background: linear-gradient(135deg, #81c784, #aed581); /* Light green gradient for view button */
-            color: white;
-        }
-
-        .view-btn:hover {
-            background: linear-gradient(135deg, #aed581, #81c784);
-            transform: scale(1.1); /* Scale up slightly on hover */
-        }
-
-        #pdf-container {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        #pdf-frame {
-            width: 80%;
-            height: 600px;
-            border: none;
-            display: none;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            padding: 15px;
-            background-color: #388e3c; /* Darker green footer */
-            color: white;
-            font-size: 14px;
-        }
-
-        .icon {
-            margin-right: 8px;
-        }
-
-        /* Fade-in animation for elements */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <title>PDF Preview and Download</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #c6f7d2;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #2b6e2b;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .unit {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      width: 280px;
+      transition: transform 0.3s ease;
+    }
+    .unit:hover {
+      transform: translateY(-5px);
+    }
+    .unit img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn {
+      display: inline-block;
+      margin: 8px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .open-btn {
+      background: #ff9800;
+      color: white;
+    }
+    .open-btn:hover {
+      background: #e68900;
+    }
+    .download-btn {
+      background: #007bff;
+      color: white;
+    }
+    .download-btn:hover {
+      background: #0056b3;
+    }
+    footer {
+      margin-top: 40px;
+      background: #2b6e2b;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Open and Download Files</h1>
-</header>
+  <h1>Open and Download Files with Preview</h1>
 
-<div class="container">
-    <!-- Unit 1 -->
+  <div class="container">
+    <!-- Example file units -->
     <div class="unit">
-        <p>Optics-unit (1)</p>
-        <button class="btn download-btn" onclick="downloadFile('Optics-R22 (1).pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('Optics-R22 (1).pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
+      <h3>Optics-R22 (1)</h3>
+      <img id="preview1" alt="Optics-R22 (1) Preview">
+      <br>
+      <a href="Optics-R22 (1).pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Optics-R22 (1).pdf" download><button class="btn download-btn">Download</button></a>
     </div>
 
-    <!-- Unit 2 -->
     <div class="unit">
-        <p>Dielectrics unit 2</p>
-        <button class="btn download-btn" onclick="downloadFile('Dielectrics.pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('Dielectrics.pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
+      <h3>Dielectrics</h3>
+      <img id="preview2" alt="Dielectrics Preview">
+      <br>
+      <a href="nrv.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="nrv.pdf" download><button class="btn download-btn">Download</button></a>
     </div>
 
-    <!-- Unit 3 -->
     <div class="unit">
-        <p>Magnetics unit 2</p>
-        <button class="btn download-btn" onclick="downloadFile('Magnetics.pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('Magnetics.pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
+      <h3>Magnetics</h3>
+      <img id="preview3" alt="Magnetics Preview">
+      <br>
+      <a href="Magnetics.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Magnetics.pdf" download><button class="btn download-btn">Download</button></a>
     </div>
 
-    <!-- Unit 4 -->
+    
+
     <div class="unit">
-        <p>EM-Waves unit 3</p>
-        <button class="btn download-btn" onclick="downloadFile('EM-Waves (student notes).pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('EM-Waves (student notes).pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
+      <h3>EM-Waves </h3>
+      <img id="preview4" alt="EM-Waves (student notes) Preview">
+      <br>
+      <a href="EM-Waves (student notes).pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="EM-Waves (student notes).pdf" download><button class="btn download-btn">Download</button></a>
     </div>
 
-    <!-- Unit 5 -->
     <div class="unit">
-        <p>Fiber Optics</p>
-        <button class="btn download-btn" onclick="downloadFile('Fiber Optics.pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('Fiber Optics.pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
+      <h3>Fiber Optics</h3>
+      <img id="preview5" alt="Fiber Optics Preview">
+      <br>
+      <a href="Fiber Optics.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Fiber Optics.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3>Nanomaterials </h3>
+      <img id="preview6" alt="Nanomaterials student notes (1) Preview">
+      <br>
+      <a href="Nanomaterials student notes (1).pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Nanomaterials student notes (1).pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+     <div class="unit">
+      <h3>Semiconductors Material</h3>
+      <img id="preview7" alt="Semiconductors Material Preview">
+      <br>
+      <a href="Semiconductors Material.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Semiconductors Material.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+     <div class="unit">
+      <h3>IMP-AP (1)</h3>
+      <img id="preview8" alt="IMP-AP (1) Preview">
+      <br>
+      <a href="IMP-AP (1).pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="IMP-AP (1).pdf" download><button class="btn download-btn">Download</button></a>
     </div>
     <div class="unit">
-        <p>Nanomaterials </p>
-        <button class="btn download-btn" onclick="downloadFile('Nanomaterials student notes (1).pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('Nanomaterials student notes (1).pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
-    </div>
-  <div class="unit">
-        <p>Semiconductors Material</p>
-        <button class="btn download-btn" onclick="downloadFile('Semiconductors Material.pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('Semiconductors Material.pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
+      <h3>Superconductivity Material</h3>
+      <img id="preview9" alt="Superconductivity Material Preview">
+      <br>
+      <a href="Superconductivity Material.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Superconductivity Material.pdf" download><button class="btn download-btn">Download</button></a>
     </div>
 
-    <!-- Unit 3 -->
-    <div class="unit">
-        <p>Important QUESTIONS </p>
-        <button class="btn download-btn" onclick="downloadFile('IMP-AP (1).pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('IMP-AP (1).pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
-    </div>
+  </div>
 
-    <!-- Unit 4 -->
-    <div class="unit">
-        <p>Superconductivity Material</p>
-        <button class="btn download-btn" onclick="downloadFile('Superconductivity Material.pdf')"><i class="fas fa-download icon"></i>Download File</button>
-        <button class="btn view-btn" onclick="openFile('Superconductivity Material.pdf')"><i class="fas fa-eye icon"></i>View in Page</button>
-    </div>
-</div>
+  <footer>
+    &copy; 2025 Open files on desktop or mobile. Credit: V and G.
+  </footer>
 
-<!-- PDF Display Section -->
-<div id="pdf-container">
-    <iframe id="pdf-frame"></iframe>
-</div>
+  <script>
+    // PDF.js setup
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js";
 
-<footer>
-    &copy; 2025 @open files in desktop only and you can download files desktop or mobile. Credit goes to V and G.
-</footer>
+    // List of PDFs with preview image IDs
+    const files = [
+      { id: "preview1", file: "Optics-R22 (1).pdf" },
+      { id: "preview2", file: "nrv.pdf" },
+      { id: "preview3", file: "Magnetics.pdf" },
+      { id: "preview4", file: "EM-Waves (student notes).pdf" },
+      { id: "preview5", file: "Fiber Optics.pdf" },
+      { id: "preview6", file: "Nanomaterials student notes (1).pdf" },
+      { id: "preview7", file: "Semiconductors Material.pdf" },
 
-<script>
-    function downloadFile(file) {
-        var link = document.createElement("a");
-        link.href = file;
-        link.download = file;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
+        { id: "preview8", file: "IMP-AP (1).pdf" }
+        { id: "preview9", file: "Superconductivity Material.pdf" }
+    ];
 
-    function openFile(file) {
-        var pdfFrame = document.getElementById("pdf-frame");
-        pdfFrame.src = file;
-        pdfFrame.style.display = "block";
-    }
-</script>
+    files.forEach(item => {
+      const loadingTask = pdfjsLib.getDocument(item.file);
+      loadingTask.promise.then(pdf => {
+        pdf.getPage(1).then(page => {
+          const scale = 1;
+          const viewport = page.getViewport({ scale: scale });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          const renderContext = { canvasContext: context, viewport: viewport };
+          page.render(renderContext).promise.then(() => {
+            document.getElementById(item.id).src = canvas.toDataURL();
+          });
+        });
+      }).catch(err => {
+        console.error("Error loading PDF:", item.file, err);
+      });
+    });
+  </script>
 
 </body>
 </html>
+
+
+
+
+
