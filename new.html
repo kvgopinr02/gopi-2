@@ -6,13 +6,15 @@
      crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Learning Platform</title>
+
     <style>
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            background: linear-gradient(to bottom, rgba(144, 238, 144, 0.5), rgba(144, 238, 144, 0.7)), url('https://source.unsplash.com/1600x900/?education,study') no-repeat center center/cover;
+            background: linear-gradient(to bottom, rgba(144, 238, 144, 0.5), rgba(144, 238, 144, 0.7)), 
+            url('https://source.unsplash.com/1600x900/?education,study') no-repeat center center/cover;
             font-family: Arial, sans-serif;
             margin: 0;
             color: #fff;
@@ -57,8 +59,8 @@
             background-color: rgba(255, 255, 255, 0.9);
             color: #333;
             font-size: 20px;
-            margin: 10px 0;
-            padding: 15px 30px;
+            margin: 7px 0;
+            padding: 10px 22px;
             border: none;
             border-radius: 25px;
             cursor: pointer;
@@ -92,9 +94,9 @@
             transform: scale(1.2);
         }
 
-        /* ⭐ STATIC NOTE BOX (added section) */
+        /* Flash note */
         .flash-note {
-            background: rgba(0, 0, 0, 0.6);;
+            background: rgba(0, 0, 0, 0.4);
             padding: 6px 0;
             margin-top: 10px;
             margin-bottom: 20px;
@@ -114,6 +116,15 @@
             font-weight: bold;
         }
 
+        /* ⭐ SEMESTER WRAPPER */
+        .semester-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 40px;
+            position: relative;
+        }
+
         .new-section {
             background: url('https://source.unsplash.com/1200x400/?books,learning') no-repeat center center/cover;
             padding: 40px;
@@ -121,11 +132,29 @@
             color: white;
             animation: scaleUp 1s ease forwards;
             opacity: 0;
-            margin-top: 30px;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
+            align-items: center;
+            width: 360px;
+        }
+
+        /* ⭐ Visitor box BELOW semester section */
+        .visitor-box {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px 18px;
+            width: 180px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.4);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .visitor-box span {
+            color: #ffeb3b;
+            font-size: 22px;
         }
 
         @keyframes fadeInUp {
@@ -155,7 +184,7 @@
             font-size: 20px;
             font-weight: bold;
             padding: 10px 0;
-            margin-top: 50px;
+            margin-top: 60px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
@@ -163,7 +192,6 @@
             display: inline-block;
             white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis;
             animation: marqueeEffect 15s linear infinite, bounce 1.5s ease-in-out infinite;
         }
 
@@ -180,98 +208,90 @@
         .contact-section {
             background: #222;
             padding: 40px;
-            margin-top: 30px;
+            margin-top: 40px;
             color: #fff;
             border-radius: 10px;
             text-align: left;
         }
-
-        .contact-section h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .contact-section p {
-            font-size: 18px;
-        }
-
-        .contact-section .contact-info {
-            margin-top: 20px;
-            font-size: 16px;
-        }
-
     </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Welcome to My Learning Platform</h1>
-    </header>
+<header>
+    <h1>Welcome to My Learning Platform</h1>
+</header>
 
-    <div class="container">
-        <h2>Programming Languages</h2>
-        <p>Click on a button below to learn more about each programming language:</p>
-        
-        <a class="button" href=".html">
-            <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java Icon"> Java
-        </a>
+<div class="container">
+    <h2>Programming Languages</h2>
+    <p>Click on a button below to learn more:</p>
 
-        <a class="button" href="newc.html">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq4FK-H-yNLJB0yOZxJ9y9OW6o9JCouaM-rw&s" alt="C Icon"> C
-        </a>
+    <a class="button" href="#.html">
+        <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png"> Java
+    </a>
 
-        <a class="button" href="new1.html">
-            <img src="https://play-lh.googleusercontent.com/9zvNJHedNg_6lOdwcodODMVsyeHKxuTIpnbBzomRGGZAp_vKVXnd5SlF8XZcXyGYjQ" alt="DSA Icon"> DSA
-        </a>
+    <a class="button" href="newc.html">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq4FK-H-yNLJB0yOZxJ9y9OW6o9JCouaM-rw&s"> C
+    </a>
 
-        <a class="button" href=".html">
-            <img src="https://cdn-icons-png.flaticon.com/512/1822/1822899.png" alt="Python Icon"> Python
-        </a>
+    <a class="button" href="new1.html">
+        <img src="https://play-lh.googleusercontent.com/9zvNJHedNg_6lOdwcodODMVsyeHKxuTIpnbBzomRGGZAp_vKVXnd5SlF8XZcXyGYjQ"> DSA
+    </a>
 
-        <!-- ⭐ STATIC NOTE BELOW PROGRAMMING LANGUAGES -->
-        <div class="flash-note">
-            <span>Only C Programming and DSA Codes Are Available</span>
-        </div>
+    <a class="button" href="#.html">
+        <img src="https://cdn-icons-png.flaticon.com/512/1822/1822899.png"> Python
+    </a>
 
+    <div class="flash-note">
+        <span>Only C Programming and DSA Codes Are Available</span>
     </div>
+</div>
 
+<div class="semester-wrapper">
     <div class="new-section">
+
         <h2>Semester Theory Resources</h2>
-        <p>Click below for resources related to Semester :</p>
+        <p>Click below for all semester content:</p>
 
         <a class="button" href="sem5syllabus.html">
-            <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png" alt="Book Icon"> Semester 5 Content
+            <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png"> Semester 5
         </a>
 
         <a class="button" href="sem4index.html">
-            <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png" alt="Book Icon"> Semester 4 Content
+            <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png"> Semester 4
         </a>
 
         <a class="button" href="subjectssem3.html">
-            <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png" alt="Book Icon"> Semester 3 Content
+            <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png"> Semester 3
         </a>
 
         <a class="button" href="sem2units.html">
-            <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png" alt="Book Icon"> Semester 2 Content
+            <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png"> Semester 2
         </a>
-    </div>
-    
-    <div class="marquee-container">
-        <div class="marquee">
-            Wishing You All the Best on Your Educational Journey !!
-        </div>
-    </div>
 
-    <div class="contact-section">
-        <h2>Contact Details</h2>
-        <p>If you have any questions or are facing any problems while accessing the files, please feel free to get in touch:</p>
-
-        <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:contact@learningplatform.com">..@gvpce.ac.in</a></p>
-            <p><strong>Phone:</strong> +91 00000 00000</p>
+        <!-- ⭐ Visitor Box BELOW buttons -->
+        <div class="visitor-box">
+            Visitor Number:<span id="count">1</span>
         </div>
+
     </div>
+</div>
+
+<script>
+    let count = localStorage.getItem("visitCount") || 1;
+    document.getElementById("count").innerText = count;
+    localStorage.setItem("visitCount", ++count);
+</script>
+
+<div class="marquee-container">
+    <div class="marquee">Wishing You All the Best on Your Educational Journey !!</div>
+</div>
+
+<div class="contact-section">
+    <h2>Contact Details</h2>
+    <p><strong>Email:</strong> ..@gvpce.ac.in</p>
+    <p><strong>Phone:</strong> +91 00000 00000</p>
+</div>
 
 </body>
 </html>
-
