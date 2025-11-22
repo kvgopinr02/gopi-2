@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus PDF Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #a8d5ba;
+        }
+        
+        h2 { 
+            padding: 30px 0; 
+            font-size: 36px; 
+            color: #333; 
+        }
+
+        .container { margin-top: 20px; }
+
+        .subject { 
+            margin: 10px; 
+            padding: 15px; 
+            border-radius: 8px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            width: 80%; 
+            margin: 10px auto; 
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .subject:hover {
+            transform: translateY(-5px);
+            background-color: #b2dfdb;
+        }
+
+        .subject button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .subject button:hover {
+            background-color: #45a049;
+            transform: scale(1.1); 
+        }
+
+        iframe { 
+            width: 80%; 
+            height: 500px; 
+            margin-top: 20px; 
+            border: 1px solid #ccc; 
+        }
+
+        .icon { 
+            margin-right: 10px; 
+            font-size: 30px; 
+            transition: transform 0.3s ease; 
+        }
+
+        .subject:hover .icon {
+            transform: rotate(10deg);
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateX(-30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <h2>Syllabus PDF Viewer</h2>
+
+    <div class="container">
+
+        <!-- Computer Networks -->
+        <div class="subject" style="background-color: #e3f2fd;">
+            <div><i class="fas fa-network-wired icon"></i> 
+                <strong>Computer Networks</strong></div>
+            <button onclick="viewPDF('22CT1112.pdf')">View</button>
+        </div>
+
+        <!-- Software Essentials -->
+        <div class="subject" style="background-color: #fce4ec;">
+            <div><i class="fas fa-code icon"></i> 
+                <strong>Software Essentials</strong></div>
+            <button onclick="viewPDF('22CS1104.pdf')">View</button>
+        </div>
+
+        <!-- FLAT -->
+        <div class="subject" style="background-color: #f1f8e9;">
+            <div><i class="fas fa-project-diagram icon"></i> 
+                <strong>FLAT</strong></div>
+            <button onclick="viewPDF('22CT1113.pdf')">View</button>
+        </div>
+
+        <!-- Constitution of India -->
+        <div class="subject" style="background-color: #ffecb3;">
+            <div><i class="fas fa-balance-scale icon"></i> 
+                <strong>Constitution of India</strong></div>
+            <button onclick="viewPDF('22CT1151.pdf')">View</button>
+        </div>
+
+        <!-- Artificial Intelligence -->
+        <div class="subject" style="background-color: #e8f5e9;">
+            <div><i class="fas fa-robot icon"></i> 
+                <strong>Artificial Intelligence</strong></div>
+            <button onclick="viewPDF('22CT1151.pdf')">View</button>
+        </div>
+
+    </div>
+
+    <iframe id="pdfViewer" src="" hidden></iframe>
+
+    <script>
+        function viewPDF(fileName) {
+            const viewer = document.getElementById("pdfViewer");
+            viewer.src = fileName;
+            viewer.hidden = false;
+        }
+    </script>
+
+</body>
+</html>
