@@ -7,19 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Learning Platform</title>
     <style>
-        /* Enable smooth scrolling for the entire page */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Full-page background with light green */
         body {
             background: linear-gradient(to bottom, rgba(144, 238, 144, 0.5), rgba(144, 238, 144, 0.7)), url('https://source.unsplash.com/1600x900/?education,study') no-repeat center center/cover;
             font-family: Arial, sans-serif;
             margin: 0;
             color: #fff;
             text-align: center;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
         }
 
         header {
@@ -46,7 +44,6 @@
             opacity: 0;
         }
 
-        /* Container for buttons */
         .container {
             display: flex;
             flex-direction: column;
@@ -56,7 +53,6 @@
             margin-top: 40px;
         }
 
-        /* Button styling */
         .button {
             background-color: rgba(255, 255, 255, 0.9);
             color: #333;
@@ -78,16 +74,13 @@
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Hover effects with related colors */
         .button:hover {
-            background: linear-gradient(45deg, #4caf50, #2196f3, #9c27b0); /* Green, Blue, and Purple */
+            background: linear-gradient(45deg, #4caf50, #2196f3, #9c27b0);
             color: white;
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0px 12px 18px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, background 0.5s ease, box-shadow 0.3s ease;
         }
 
-        /* Icon styling */
         .button img {
             width: 30px;
             height: 30px;
@@ -95,12 +88,32 @@
             transition: transform 0.3s ease;
         }
 
-        /* Hover effect for icon */
         .button:hover img {
             transform: scale(1.2);
         }
 
-        /* New Section for Semester 4 */
+        /* ⭐ STATIC NOTE BOX (added section) */
+        .flash-note {
+            background: rgba(0, 0, 0, 0.6);;
+            padding: 6px 0;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            width: 70%;
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .flash-note span {
+            background: linear-gradient(45deg, #4caf50, #2196f3, #9c27b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
         .new-section {
             background: url('https://source.unsplash.com/1200x400/?books,learning') no-repeat center center/cover;
             padding: 40px;
@@ -115,59 +128,27 @@
             flex-direction: column;
         }
 
-        /* Fade-in animation */
         @keyframes fadeInUp {
-            0% {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
-        /* Button bounce animation */
         @keyframes bounceIn {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Zoom-in animation for Header */
         @keyframes zoomIn {
-            0% {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Scale-up animation for new section */
         @keyframes scaleUp {
-            0% {
-                transform: scale(0.9);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Marquee Styling */
         .marquee-container {
             background: #333;
             color: #fff;
@@ -186,27 +167,16 @@
             animation: marqueeEffect 15s linear infinite, bounce 1.5s ease-in-out infinite;
         }
 
-        /* Marquee effect */
         @keyframes marqueeEffect {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
 
-        /* Bounce effect for marquee text */
         @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
-        /* Contact Section */
         .contact-section {
             background: #222;
             padding: 40px;
@@ -233,6 +203,7 @@
     </style>
 </head>
 <body>
+
     <header>
         <h1>Welcome to My Learning Platform</h1>
     </header>
@@ -244,18 +215,26 @@
         <a class="button" href="java.html">
             <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java Icon"> Java
         </a>
+
         <a class="button" href="newc.html">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq4FK-H-yNLJB0yOZxJ9y9OW6o9JCouaM-rw&s" alt="C Icon"> C
         </a>
+
         <a class="button" href="new1.html">
             <img src="https://play-lh.googleusercontent.com/9zvNJHedNg_6lOdwcodODMVsyeHKxuTIpnbBzomRGGZAp_vKVXnd5SlF8XZcXyGYjQ" alt="DSA Icon"> DSA
         </a>
-        <a class="button" href="home.html">
+
+        <a class="button" href="#.html">
             <img src="https://cdn-icons-png.flaticon.com/512/1822/1822899.png" alt="Python Icon"> Python
         </a>
+
+        <!-- ⭐ STATIC NOTE BELOW PROGRAMMING LANGUAGES -->
+        <div class="flash-note">
+            <span>Only C Programming and DSA Codes Are Available</span>
+        </div>
+
     </div>
 
-    <!-- New Section for Semester 4 -->
     <div class="new-section">
         <h2>Semester Theory Resources</h2>
         <p>Click below for resources related to Semester :</p>
@@ -263,25 +242,26 @@
         <a class="button" href="sem5syllabus.html">
             <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png" alt="Book Icon"> Semester 5 Content
         </a>
+
         <a class="button" href="sem4index.html">
             <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png" alt="Book Icon"> Semester 4 Content
         </a>
+
         <a class="button" href="subjectssem3.html">
             <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png" alt="Book Icon"> Semester 3 Content
         </a>
+
         <a class="button" href="sem2units.html">
             <img src="https://cdn-icons-png.flaticon.com/512/2332/2332585.png" alt="Book Icon"> Semester 2 Content
         </a>
     </div>
     
-    <!-- Marquee at the Footer -->
     <div class="marquee-container">
         <div class="marquee">
             Wishing You All the Best on Your Educational Journey !!
         </div>
     </div>
 
-    <!-- Contact Section -->
     <div class="contact-section">
         <h2>Contact Details</h2>
         <p>If you have any questions or are facing any problems while accessing the files, please feel free to get in touch:</p>
@@ -291,12 +271,6 @@
             <p><strong>Phone:</strong> +91 00000 00000</p>
         </div>
     </div>
+
 </body>
 </html>
-
-
-
-
-
-
-
