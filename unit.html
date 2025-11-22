@@ -1,172 +1,180 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open and Download Files</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #c6f7d2;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-        h1 {
-            color: #2b6e2b;
-            text-align: center;
-        }
-
-        .container {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .unit {
-            background-color: #388e3c;
-            color: white;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 20px;
-            cursor: pointer;
-            width: 300px;
-            margin: 20px auto;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .unit:hover {
-            background-color: #2e7d32;
-            transform: translateY(-10px);
-        }
-
-        .btn {
-            padding: 10px 15px;
-            font-size: 16px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin: 5px;
-        }
-
-        .download-btn {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .download-btn:hover {
-            background-color: #0056b3;
-        }
-
-        .view-btn {
-            background-color: #ff9800;
-            color: white;
-        }
-
-        .view-btn:hover {
-            background-color: #e68900;
-        }
-
-        #pdf-container {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        #pdf-frame {
-            width: 80%;
-            height: 600px;
-            border: none;
-            display: none;
-        }
-
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            padding: 15px;
-            background-color: #2b6e2b;
-            color: white;
-            font-size: 14px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>PDF Preview and Download</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #c6f7d2;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #2b6e2b;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .unit {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      width: 280px;
+      transition: transform 0.3s ease;
+    }
+    .unit:hover {
+      transform: translateY(-5px);
+    }
+    .unit img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn {
+      display: inline-block;
+      margin: 8px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .open-btn {
+      background: #ff9800;
+      color: white;
+    }
+    .open-btn:hover {
+      background: #e68900;
+    }
+    .download-btn {
+      background: #007bff;
+      color: white;
+    }
+    .download-btn:hover {
+      background: #0056b3;
+    }
+    footer {
+      margin-top: 40px;
+      background: #2b6e2b;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Open and Download Files</h1>
-    </header>
+  <h1>Open and Download Files with Preview</h1>
 
-    <div class="container">
-        <!-- Unit 1 -->
-        <div class="unit">
-            <p>Maths Unit 1 part 2</p>
-            <button class="btn download-btn" onclick="downloadFile('Maths Unit 1 part 2.pdf')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('Maths Unit 1 part 2.pdf')">View in Page</button>
-        </div>
-
-        <!-- Unit 2 -->
-        <div class="unit">
-            <p>Maths Unit 1</p>
-            <button class="btn download-btn" onclick="downloadFile('Maths Unit 1.pdf')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('Maths Unit 1.pdf')">View in Page</button>
-        </div>
-
-        <!-- Unit 3 -->
-        <div class="unit">
-            <p>Maths Unit 2 part 2</p>
-            <button class="btn download-btn" onclick="downloadFile('Maths Unit 2 part 2.pdf')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('Maths Unit 2 part 2.pdf')">View in Page</button>
-        </div>
-
-        <!-- Unit 4 -->
-        <div class="unit">
-            <p>Maths Unit 2</p>
-            <button class="btn download-btn" onclick="downloadFile('Maths Unit 2.pdf')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('Maths Unit 2.pdf')">View in Page</button>
-        </div>
-
-        <!-- Unit 5 -->
-        <div class="unit">
-            <p>Maths Unit 4</p>
-            <button class="btn download-btn" onclick="downloadFile('Maths Unit 4.pdf')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('Maths Unit 4.pdf')">View in Page</button>
-        </div>
-
-        <!-- Conotes -->
-        <div class="unit">
-            <p> Complete Maths notes</p>
-            <button class="btn download-btn" onclick="downloadFile('Vamsi Complete Maths notes.pdf')">Download File</button>
-            <button class="btn view-btn" onclick="openFile('Vamsi Complete Maths notes.pdf')">View in Page</button>
-        </div>
+  <div class="container">
+    <!-- Example file units -->
+    <div class="unit">
+      <h3>Maths Unit 1 part 2</h3>
+      <img id="preview1" alt="Maths Unit 1 part 2 Preview">
+      <br>
+      <a href="Maths Unit 1 part 2.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Maths Unit 1 part 2.pdf" download><button class="btn download-btn">Download</button></a>
     </div>
 
-    <!-- PDF Display Section -->
-    <div id="pdf-container">
-        <iframe id="pdf-frame"></iframe>
+    <div class="unit">
+      <h3>Maths Unit 1</h3>
+      <img id="preview2" alt="Maths Unit 1 Preview">
+      <br>
+      <a href="Maths Unit 1.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Maths Unit 1.pdf" download><button class="btn download-btn">Download</button></a>
     </div>
 
-    <footer>
-        &copy; 2025 @open files in desktop only and you can download files desktop or mobile .Credit goes to V and G.
-    </footer>
+    <div class="unit">
+      <h3>Maths Unit 2 part 2</h3>
+      <img id="preview3" alt="Maths Unit 2 part 2 Preview">
+      <br>
+      <a href="Maths Unit 2 part 2.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Maths Unit 2 part 2.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
 
-    <script>
-        function downloadFile(file) {
-            var link = document.createElement("a");
-            link.href = file;
-            link.download = file;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+    
 
-        function openFile(file) {
-            var pdfFrame = document.getElementById("pdf-frame");
-            pdfFrame.src = file;
-            pdfFrame.style.display = "block";
-        }
-    </script>
+    <div class="unit">
+      <h3>Maths Unit 2</h3>
+      <img id="preview4" alt="Maths Unit 2 Preview">
+      <br>
+      <a href="Maths Unit 2.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Maths Unit 2.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3>Maths Unit 4</h3>
+      <img id="preview5" alt="Maths Unit 4 Preview">
+      <br>
+      <a href="Maths Unit 4.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Maths Unit 4.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3> Complete Maths notes2</h3>
+      <img id="preview6" alt="Vamsi Complete Maths notes2 Preview">
+      <br>
+      <a href="Vamsi Complete Maths notes2.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Vamsi Complete Maths notes2.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+    
+
+  </div>
+
+  <footer>
+    &copy; 2025 Open files on desktop or mobile. Credit: V and G.
+  </footer>
+
+  <script>
+    // PDF.js setup
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js";
+
+    // List of PDFs with preview image IDs
+    const files = [
+      { id: "preview1", file: "Maths Unit 1 part 2.pdf" },
+      { id: "preview2", file: "Maths Unit 1.pdf" },
+      { id: "preview3", file: "Maths Unit 2 part 2.pdf" },
+      { id: "preview4", file: "Maths Unit 2.pdf" },
+      { id: "preview5", file: "Maths Unit 4.pdf" },
+      { id: "preview6", file: "Vamsi Complete Maths notes2.pdf" },
+    ];
+
+    files.forEach(item => {
+      const loadingTask = pdfjsLib.getDocument(item.file);
+      loadingTask.promise.then(pdf => {
+        pdf.getPage(1).then(page => {
+          const scale = 1;
+          const viewport = page.getViewport({ scale: scale });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          const renderContext = { canvasContext: context, viewport: viewport };
+          page.render(renderContext).promise.then(() => {
+            document.getElementById(item.id).src = canvas.toDataURL();
+          });
+        });
+      }).catch(err => {
+        console.error("Error loading PDF:", item.file, err);
+      });
+    });
+  </script>
 
 </body>
 </html>
+
+
+
+
+
