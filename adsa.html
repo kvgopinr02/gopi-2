@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Preview and Download</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #c6f7d2;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #2b6e2b;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .unit {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      width: 280px;
+      transition: transform 0.3s ease;
+    }
+    .unit:hover {
+      transform: translateY(-5px);
+    }
+    .unit img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn {
+      display: inline-block;
+      margin: 8px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .open-btn {
+      background: #ff9800;
+      color: white;
+    }
+    .open-btn:hover {
+      background: #e68900;
+    }
+    .download-btn {
+      background: #007bff;
+      color: white;
+    }
+    .download-btn:hover {
+      background: #0056b3;
+    }
+    footer {
+      margin-top: 40px;
+      background: #2b6e2b;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Open and Download Files with Preview</h1>
+
+  <div class="container">
+    <!-- Example file units -->
+    <div class="unit">
+      <h3>ADSA Notes</h3>
+      <img id="preview1" alt="ads notes Preview">
+      <br>
+      <a href="ads notes.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="ads notes.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3>Multiway Tries</h3>
+      <img id="preview2" alt="Multiway Tries Preview">
+      <br>
+      <a href="Multiway Tries.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Multiway Tries.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3>Splay trees</h3>
+      <img id="preview3" alt="Splay trees Preview">
+      <br>
+      <a href="Splay trees.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="Splay trees.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    
+
+    <div class="unit">
+      <h3>Unit 2</h3>
+      <img id="preview4" alt="unit2 Preview">
+      <br>
+      <a href="unit2.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="unit2.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3>Unit 4</h3>
+      <img id="preview5" alt="unit4 Preview">
+      <br>
+      <a href="unit4.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="unit4.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+
+    <div class="unit">
+      <h3>AVL Trees</h3>
+      <img id="preview6" alt="WhatsApp Scan 2025-10-31 at 13.05.53 Preview">
+      <br>
+      <a href="WhatsApp Scan 2025-10-31 at 13.05.53.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="WhatsApp Scan 2025-10-31 at 13.05.53.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+     <div class="unit">
+      <h3>ADSSA Mid 1-1</h3>
+      <img id="preview7" alt="ads mid 1-1 Preview">
+      <br>
+      <a href="ads mid 1-1.pdf" target="_blank"><button class="btn open-btn">Open</button></a>
+      <a href="ads mid 1-1.pdf" download><button class="btn download-btn">Download</button></a>
+    </div>
+    
+
+  </div>
+
+  <footer>
+    &copy; 2025 Open files on desktop or mobile. Credit: V and G.
+  </footer>
+
+  <script>
+    // PDF.js setup
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js";
+
+    // List of PDFs with preview image IDs
+    const files = [
+      { file: 'ads notes.pdf', id: 'preview1' },
+      { file: 'Multiway Tries.pdf', id: 'preview2' },
+      { file: 'Splay trees.pdf', id: 'preview3' },
+      { file: 'unit2.pdf', id: 'preview4' },
+      { file: 'unit4.pdf', id: 'preview5' },
+      { file: 'WhatsApp Scan 2025-10-31 at 13.05.53.pdf', id: 'preview6' },
+      { file: 'ads mid 1-1.pdf', id: 'preview7' }
+    ];
+
+    files.forEach(item => {
+      const loadingTask = pdfjsLib.getDocument(item.file);
+      loadingTask.promise.then(pdf => {
+        pdf.getPage(1).then(page => {
+          const scale = 1;
+          const viewport = page.getViewport({ scale: scale });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          const renderContext = { canvasContext: context, viewport: viewport };
+          page.render(renderContext).promise.then(() => {
+            document.getElementById(item.id).src = canvas.toDataURL();
+          });
+        });
+      }).catch(err => {
+        console.error("Error loading PDF:", item.file, err);
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
